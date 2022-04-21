@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ex01 {
+public class CalDaysUseMethod {
 
 	static int [][] mdays = {
 			{31,28,31,30,31,30,31,31,30,31,30,31},//평년
@@ -42,6 +42,8 @@ public class Ex01 {
 			int day =sc.nextInt();
 			System.out.printf("그 해 %d일째 날입니다.\n ",dayOfYear(year,month,day));
 			
+			System.out.println("반복 yes(1),no(0)");
+			re = sc.nextInt();
 		}while(re ==1);
 		
 	}
