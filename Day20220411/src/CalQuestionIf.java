@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ex01 {
+public class CalQuestionIf {
 
 	public static void main(String[] args) {
 
@@ -13,9 +13,9 @@ public class Ex01 {
 
 	
 	while (true) {
-		System.out.print("¿¬»êÀÚ : ");
+		System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ");
 		cal = sc.next();
-		System.out.print("Á¤¼ö : " );
+		System.out.print("ï¿½ï¿½ï¿½ï¿½ : " );
 		num1 = sc.nextInt();
 		
 		if (cal.equals("+")) {
@@ -34,7 +34,7 @@ public class Ex01 {
 	}
 	
 		
-	}//mainÀÇ ³¡
+	}//mainï¿½ï¿½ ï¿½ï¿½
 
 }
 

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ex02 {
+public class CalQuestionSwitch {
 
 	public static void main(String[] args) {
 
@@ -9,12 +9,12 @@ public class Ex02 {
 		Scanner sc = new Scanner(System.in);
 		
 		while(true) {
-			System.out.println("¼ýÀÚÀÔ·Â(Á¾·á:0)) : ");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½(ï¿½ï¿½ï¿½ï¿½:0)) : ");
 			String tmp = sc.nextLine();
 			int num = Integer.parseInt(tmp);
 			if (num==0) break;
 			
-			System.out.println("»çÄ¢¿¬»ê ±âÈ£ : ");
+			System.out.println("ï¿½ï¿½Ä¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ : ");
 			String str = sc.nextLine();
 			char ch = str.charAt(0);
 			
@@ -32,10 +32,10 @@ public class Ex02 {
 				sum/=num;
 				break;
 				default :
-					System.out.println("+ - * / Áß¿¡ ÇÏ³ª¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+					System.out.println("+ - * / ï¿½ß¿ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½");
 			}
 		}
 		System.out.println(sum);
-	}//mainÀÇ ³¡
+	}//mainï¿½ï¿½ ï¿½ï¿½
 
 }
