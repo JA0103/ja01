@@ -2,75 +2,48 @@ import java.util.Scanner;
 
 public class Ex01 {
 
+	static int [][] mdays = {
+			{31,28,31,30,31,30,31,31,30,31,30,31},//평년
+			{31,29,31,30,31,30,31,31,30,31,30,31} //윤년
+	};
+	
+	static int isLeap(int year) {  //평년, 윤년 계산
+		
+		return (year%4==0 && year%7!=0 || year%400==0) ? 1: 0;
+		
+	}
+	
+	//경과 일 수를 구함
+	static int dayOfYear(int year, int month, int day) {
+		
+		int days = day;
+		
+		for(int i=1; i<month; i++)
+			days += mdays [isLeap(year)][i-1];
+		
+		return days;
+		
+	}
+	
 	public static void main(String[] args) {
-
-	Scanner sc = new Scanner(System.in);
-			//세 정수를 입력 받아 최대 중간 최소 값 순서로 출력
-			int max = sc.nextInt();
-			int med = sc.nextInt();
-			int min = sc.nextInt();
+	
+		Scanner sc = new Scanner(System.in);
+		
+		int re=0;
+		
+		System.out.println("경과 일수를 구한다.");
+		
+		do {
+			System.out.print("년 입력 : ");
+			int year =sc.nextInt();
+			System.out.print("월 입력 : ");
+			int month =sc.nextInt();
+			System.out.print("일 입력 : ");
+			int day =sc.nextInt();
+			System.out.printf("그 해 %d일째 날입니다.\n ",dayOfYear(year,month,day));
 			
-			if(max<med) {
-				int tmp = max;
-				max= med;
-				med = tmp;
-			}
-			
-			if(max<min) {
-				int tmp = max;
-				max = min;
-				min = tmp;
-			}
-			
-			if(med<min) {
-				int tmp = min;
-				min = med;
-				med = tmp;
-			}
-			
-			System.out.println("최대 :"+max+" 중간 : "+med+" 최소 : "+min);
-//				
-//			
-//			
-//			//강사님 버전
-//			Scanner sc = new Scanner(System.in);
-//			
-//			int num1 = sc.nextInt();
-//			int num2 = sc.nextInt();
-//			int num3 = sc.nextInt();
-//			int max, min, med;
-//			max=min=med=0;
-//			
-//			if(num2>num1) {
-//				if(num2>num3) {
-//					max = num2;
-//					if(num1 > num2) {
-//						med = num1;
-//						min = num3;
-//					}
-//				}
-//				else {
-//					max = num3;
-//					med = num2;
-//					min = num1;
-//				}
-//			}else if (num3>num1) {
-//				max = num3;
-//				med = num1;
-//				min = num2;
-//			}else {
-//				if(num2>num3) {
-//					max = num1;
-//					med = num2;
-//					min = num3;
-//				}else {
-//					max = num1;
-//					med = num3;
-//					min = num2;
-//				}
-//			}
-//			
-//			System.out.printf("max :%d , med : %d , min : %d %n",max ,med, min);
-	}//class end.
+		}while(re ==1);
+		
+	}
 
 }
