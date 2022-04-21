@@ -1,0 +1,30 @@
+
+public class Ex01 {
+
+	public static void main(String[] args) {
+
+		int m = 1500;
+		int lowm = 0;
+		
+		
+		int age = (int)(Math.random()*99)+1;
+		
+		
+		System.out.println(age);
+		
+		if(0<=age && age<=3) 
+			m= 0;
+		else if(4<= age && age<13) 
+			lowm = m-(m*1/2);
+		else if(14<=age && age<=19)
+			lowm = m-(m*1/4);
+		else if(20<=age)
+			m=1500;
+		else if(65<=age)
+			m=0;
+			
+		System.out.println("¿ä±ÝÀº" +lowm);
+		
+	}
+
+}

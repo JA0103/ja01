@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Ex02 {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		int num=0;
+		int max=0;
+		int i=0;
+		String tmp;
+		
+		System.out.println("정 수 5회 입력ㄷ : ");
+		
+		while(i<5) {
+			tmp = sc.nextLine();
+			num = Integer.parseInt(tmp);
+			
+			if(num>=0 && num<101) {
+				if(max<num) max=num;
+				i++;
+			}
+			else {
+				System.out.println("0이상 100이하만 가능");
+			}
+		}
+		System.out.println("최대값 : "+max);
+
+	}
+
+}

@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Ex01 {
+
+	public static void main(String[] args) {
+
+		int m = 1500;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int age = sc.nextInt();
+		
+		System.out.println("나이를 입력하세요");
+		
+		if(0<=age && age<=3) 
+			m= 0;
+		else if(4<= age && age<13) 
+			m= 1500/2;
+		else if(14<=age && age<=19)
+			m = 1500/4;
+		else if(20<=age)
+			m=1500;
+		else if(65<=age)
+			m=0;
+			
+		System.out.println("요금은" +m);
+		
+	}
+
+}

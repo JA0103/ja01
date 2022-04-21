@@ -1,0 +1,13 @@
+
+public class Ex01 {
+
+	public static void main(String[] args) {
+
+		int i =10;
+		while (1>=0) {
+			System.out.println(i);
+		}
+		
+	}
+
+}

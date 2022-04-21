@@ -1,0 +1,40 @@
+import java.util.Arrays;
+
+public class Ex01 {
+
+	public static void main(String[] args) {
+	
+		int[][] arr= {
+				{5,5,5,5,5},
+				{10,10,10,10,10},
+				{20,20,20,20,20,20},
+				{30,30,30,30,30}
+		};
+		
+		int total=0;
+		float avg=0;
+		int cnt=0; 
+		
+		for(int[] tmp : arr) {
+			for(int i : tmp) {
+				total+=i;
+				cnt++;
+			}
+		}
+		System.out.println(cnt);
+		
+		for(int i =0; i<arr.length;i++)
+			for(int j=0; j<arr[i].length;j++)
+				
+		
+		//System.out.println("======================");
+		
+	//	avg= total/(float)(arr.length*arr[0].length);
+		
+		System.out.println("total : "+total);
+		
+		System.out.println("avg : "+avg);
+	}//class.end
+	
+
+}
