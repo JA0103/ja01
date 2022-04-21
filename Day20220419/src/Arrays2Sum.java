@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Ex02 {
+public class Arrays2Sum {
 
 	public static void main(String[] args) {
 	//주어진 2차원 배열의 데이터보다 가로와 세로로 1이 더 큰 배열을 생성해서

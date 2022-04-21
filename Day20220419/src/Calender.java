@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ex01 {
+public class Calender {
 
    public static void main(String[] args) {
 

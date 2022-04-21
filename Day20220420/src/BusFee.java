@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Ex02 {
+public class BusFee {
 	public static void main(String[] args) {
 			
 		int age = input();
