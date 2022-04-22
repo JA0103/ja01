@@ -5,39 +5,56 @@ public class Day {
 	public static void main(String[] args) {
 		//일 월 화 수 목 금 토 --> 랜덤하게 이 중 하나가 나오면
 		//그에 맞는 소문자로 요일 입력
-		//sunday, monday, tuesday, wendsday, thursday,
+		//sunday, monday, tuesday, wednesday, thursday,
 		//friday, saturday
 		
 		Scanner sc = new Scanner(System.in);
 		
-		String[] week = {"일","월","화","수","목","금","토"};
-		String[] spell = {"sunday", "monday", "tuesday", "wendsday",
+		String[] dayKor = {"일","월","화","수","목","금","토"};
+		String[] dayEng = {"sunday", "monday", "tuesday", "wednesday",
 				           "thursday","friday", "saturday"};
 		int re =0;
+		int last =-1;
+		int suc = 0;
+		int fail = 0;
 		
 		do {
+
+			int day = (int)(Math.random()*7); 
 			
-			int r = (int)(Math.random()*7);
-			
+			//그 전이랑 나온 요일이 같지 않을때까지 반복
+			do {
+				day = (int)(Math.random()*7); 
+			}while(last==day);
 			
 			
 			while(true){
 				
-				System.out.println(week[r] + " : ");
+				System.out.println(dayKor[day] + " : ");
 				String me = sc.nextLine();
 				
-				if(spell[r].equals(me)) break;
+				if(dayEng[day].equals(me)) break;
+				
 				System.out.println("오답입니다");
+				fail++;
 			} 
 				
 			System.out.println("정답입니다. 재도전(1) 종료(0)");
-			String tmp = sc.nextLine();
-			re = Integer.parseInt(tmp);
-				
+			suc++;
+			
+			String tmp = sc.nextLine();                              
+			re = Integer.parseInt(tmp);  //엔터 버퍼 오류 방지 
+			      						//-->이렇게 해줘도 됨 //re = sc.nextInt(); 
+														 //sc.nextLine();
+			
+			
+			last=day;
+			
 		}while(re == 1);
 		
 		System.out.println("프로그램 종료");
-		
+		System.out.println("성공횟수 : "+suc);
+		System.out.println("실패횟수 : "+fail);
 		
 		
 				
