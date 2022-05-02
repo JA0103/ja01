@@ -48,15 +48,10 @@ public class naverTest {
 			Document detailDoc = Jsoup.connect(newsUrl).get();
 			Element contentElenment = detailDoc.getElementById("dic_area");
 //			String content = contentElenment.text();
-			System.out.println(contentElenment.text());
 //			
 //			System.out.println(title);
 //			System.out.println(content);
 //			System.out.println();
-			
-			
-			
-			
 			
 			
 			}
@@ -64,3 +59,5 @@ public class naverTest {
 	}
 
 }
+
+
