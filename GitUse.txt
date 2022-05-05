@@ -44,6 +44,12 @@
 3. git pull origin master
 
 ========================================
+ignore파일 적용
+
+git rm -r --cached .
+git add .
+git commit -m "Apply .gitignore"
+
 
 화면 클리어
 clear
