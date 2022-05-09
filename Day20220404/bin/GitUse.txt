@@ -1,0 +1,61 @@
+처음 할 때
+---------------------
+1. git init 
+
+2. git config --global user.email "(깃허브에가입한이메일)"
+
+3. git config --global user.name "(아무거나)"
+
+4. git add . -->add(띄어쓰기).(점)
+
+5. git commit -m "(아무거나)"
+
+6. git remote add origin (깃허브에 생성된 폴더 주소)
+
+7. git push origin master
+
+
+=====================================
+
+다시 올릴 때
+-------------------------------
+1. git status    // 변경사항 있는지 확인
+
+2. git add . -->add(띄어쓰기).(점)     //파일 올리기
+
+5. git commit -m "(아무거나)"   
+
+7. git push origin master
+
+
+========================================
+
+다른 곳(ex.집 폴더)에 가져올 때
+----------------------------------
+1. git clone (주소)(한칸띄고).(점)
+// 폴 더 안이 비워져 있어야 가능(?)
+
+========================================
+
+다른 곳에서 수정하고 그거 다시 원래 폴더 안에 가져올 때
+------------------------------------------------------------
+1. git add .
+2. git commit -m "(아무거나)"
+3. git pull origin master
+
+========================================
+ignore파일 적용
+
+git rm -r --cached .
+git add .
+git commit -m "Apply .gitignore"
+
+
+화면 클리어
+clear
+
+다른 사람꺼 볼거면
+github.com/(그사람주소)
+
+강사님 주소
+github.com/sinaboro/Ezen01
