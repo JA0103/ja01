@@ -166,7 +166,7 @@ public class DataBase {
 		
 	}
 	
-	//선택 출력
+	//선택 출력(검색)
 	public void mydbSelect(int no) {
 		try {
 			
@@ -177,13 +177,11 @@ public class DataBase {
 			
 			ResultSet rs = psmt.executeQuery();
 			
-			while(rs.next()) {
+			rs.next() ;
 				System.out.println(rs.getInt(1) 
 						+ ", " + rs.getString(2)
 						+ ", " + rs.getString(3)
 						+ ", " + rs.getString(4) + " ");
-			}
-			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -205,7 +203,7 @@ public class DataBase {
 //		db.mydbListData();
 //		db.mydbDelete(15);
 //		db.mydbListData();
-		db.mydbSelect(1);
+		db.mydbSelect(11);
 //		
 	}
 

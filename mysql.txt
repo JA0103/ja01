@@ -1,0 +1,37 @@
+show databases;
+create database mydb character set utf8 collate utf8_general_ci;
+
+use mydb;  /* mydb 사용하겠다. */
+
+create table member(
+	no integer auto_increment, /*auto_increment  >> 숫자 자동 증가*/
+    name varchar(34) not null,
+    sex varchar(10) not null,  /*not null; --> 	빈칸 입력 불가*/
+    content text,
+    primary key(no) /*기본기 중복을 불허*/
+    
+);
+
+desc member;  /*테이블 구조 확인*/
+
+/*데이터 검색*/
+select * from member; /*실행 ctrl+enter -->입력 데이터 조회 */
+select content from member;
+select * from member where no =5; /*member 테이블에서 no가 1번을 보여달라. */
+select count(*) from member;
+
+/*데이터 입력*/
+insert into member(no,name, sex, content) 
+values(10,'김태연','여자','나는 김태연');
+
+/*데이터 삭제*/
+delete from member where no = 5; 
+
+/*데이터 수정*/
+update member set sex = '흠'
+where no =11;
+
+
+commit;
+
+insert into member(no, name, sex, content)  values(15,'이기자','충성','몰라')

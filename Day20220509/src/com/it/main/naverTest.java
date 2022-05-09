@@ -16,7 +16,7 @@ public class naverTest {
 		
 		for(int i=1; i<pages;i++) {
 		
-			String url = "https://news.naver.com/main/list.naver?mode=LS2D&sid2=249&sid1=102&mid=shm&date=20220502&page="+i;
+			String url = "https://news.naver.com/main/list.naver?mode=LS2D&sid2=249&sid1=102&mid=shm&date=20220509&page="+i;
 			
 			Document doc = Jsoup.connect(url).get();
 			
@@ -47,11 +47,11 @@ public class naverTest {
 			
 			Document detailDoc = Jsoup.connect(newsUrl).get();
 			Element contentElenment = detailDoc.getElementById("dic_area");
-//			String content = contentElenment.text();
+			String content = contentElenment.text();
 //			
-//			System.out.println(title);
-//			System.out.println(content);
-//			System.out.println();
+			System.out.println(title);
+			System.out.println(content);
+			System.out.println();
 			
 			
 			}
