@@ -50,6 +50,24 @@ git rm -r --cached .
 git add .
 git commit -m "Apply .gitignore"
 
+========================================
+프리퍼런스-> 리소스 이그노어
+.project 
+.classpath 
+.settings 
+
+*/target/**      
+
+추가하기
+
+폴더 안 이그노어 메모장에는
+
+.metadata
+Servers/
+
+이것만 추가!!!!
+=======================================
+
 
 화면 클리어
 clear
