@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가시속성</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+	div{
+		
+		background-color: silver;
+	}
+	
+	.inline{display: inline;}
+	.block{display:block;}
+	.inline-block{display: inline-block;}
+	.none{display: none;}
+	.visible{visibility: visible; }
+	.hidden{ visibility: hidden;}
+	
+	.half-transparent{opacity: 0.5;}
+	.opacity{ opacity: 0.3}
+</style>
+</head>
+<body>
+	<h1>가시속성</h1>
+	<p class="inline">p inline #1</p>
+	<p class="inline">p inline #2</p>
+	
+	<span class="block">span block #1</span>
+	<span class="block">span block #2</span>
+	
+	<div class="none">NONE</div>
+	<div class="inline-block">box3</div>
+	<hr>
+	<h1>visibility</h1>
+	<div class="visible">visible</div>
+	<div class="hidden">Hidden</div>
+	<div class="visible">visible</div>
+	<hr>
+	<h1>opacity</h1>
+	<div class="half-transparent">opacity: 0.5</div>
+	<div class="opacity">opacity: 0</div>
+	
+	<div class="container">
+  <h2>Button Styles</h2>
+  <button type="button" class="btn">Basic</button>
+  <button type="button" class="btn btn-default">Default</button>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-link">Link</button>      
+</div>
+	
+	<div class="container1">
+  <h2>Contextual Classes</h2>
+  <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Default</td>
+        <td>Defaultson</td>
+        <td>def@somemail.com</td>
+      </tr>      
+      <tr class="success">
+        <td>Success</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr class="danger">
+        <td>Danger</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr class="info">
+        <td>Info</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+      <tr class="warning">
+        <td>Warning</td>
+        <td>Refs</td>
+        <td>bo@example.com</td>
+      </tr>
+      <tr class="active">
+        <td>Active</td>
+        <td>Activeson</td>
+        <td>act@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+	
+</body>
+</html>
