@@ -1,4 +1,4 @@
-처음 할 때
+﻿처음 할 때
 ---------------------
 1. git init 
 
@@ -59,3 +59,8 @@ github.com/(그사람주소)
 
 강사님 주소
 github.com/sinaboro/Ezen01
+
+
+강사님 공유폴더 주소
+https://naver.me/xtTrPgdg
+비번 1234
