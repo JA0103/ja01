@@ -203,7 +203,7 @@ public class DataBase {
 //		db.mydbListData();
 //		db.mydbDelete(15);
 //		db.mydbListData();
-		db.mydbSelect(11);
+		db.mydbSelect(10);
 //		
 	}
 
