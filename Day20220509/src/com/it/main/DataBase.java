@@ -28,6 +28,7 @@ public class DataBase {
 		try {
 			
 			con = DriverManager.getConnection(URL,"root","1234");  //경로, 아이디, 비번
+			System.out.println("연결");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -203,7 +204,7 @@ public class DataBase {
 //		db.mydbListData();
 //		db.mydbDelete(15);
 //		db.mydbListData();
-		db.mydbSelect(10);
+		db.mydbListData();
 //		
 	}
 

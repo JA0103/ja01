@@ -11,7 +11,7 @@ public class naverTest {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
-		int pages =5;
+		int pages =1;
 		
 		for(int i=1; i<pages;i++) {
 		
@@ -34,7 +34,7 @@ public class naverTest {
 			Element aElement = aElements.get(0);
 			//System.out.println(aElements);
 			
-			String newsUrl = aElement.attr("href");		//湲곗궗留곹겕
+			String newsUrl = aElement.attr("href");		
 			//System.out.println(newsUrl);
 			
 			Element imgElement = aElement.select("img").get(0);

@@ -1,4 +1,5 @@
-package naverTest;
+package com.hom.naver;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +22,7 @@ public class Naver {
 		public Naver() {
 			try {
 				
-				Class.forName("com.mysql.cj.jdbd.Driver");
+				Class.forName("com.mysql.cj.jdbc.Driver");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -29,8 +30,7 @@ public class Naver {
 		//연결
 		public void getConnection() {
 			try {
-				con = DriverManager.getConnection(URL,"root","1234");
-				System.out.println("연결");
+				con = DriverManager.getConnection(URL,"root","1234");  //경로, 아이디, 비번
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -55,11 +55,17 @@ public class Naver {
 				psmt=con.prepareStatement(sql);
 				ResultSet rs = psmt.executeQuery();
 				
+				while(rs.next()) {
+					System.out.println(rs.getInt(1) 
+							+ ". <" + rs.getString(2)
+							+ "> \n" + rs.getString(3) + " \n");
+				}
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
-
+		//추가
 		public void naverInsert( String title, String content) {
 			try {
 				getConnection();
@@ -72,7 +78,7 @@ public class Naver {
 				psmt.setString(2, content);
 				
 				psmt.executeUpdate();
-				
+				System.out.println("ok");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
@@ -82,57 +88,37 @@ public class Naver {
 
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 //		int pages =1;
 //		
-//		for(int i=1; i<pages;i++) {
+//		for(int i=1; i<=pages;i++) {
 //		
 //			String url = "https://news.naver.com/main/list.naver?mode=LS2D&sid2=249&sid1=102&mid=shm&date=20220509&page="+i;
 //			
-//			Document doc = null;
-//			try {
-//				doc = Jsoup.connect(url).get();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+//			Document doc = Jsoup.connect(url).get();
 //			
 //			Elements elements = doc.getElementsByAttributeValue("class", "list_body newsflash_body");
 //			Element element = elements.get(0);
-//			//System.out.println(element);
 //			 
 //			Elements photoElements = element.getElementsByAttributeValue("class", "photo");
-//			//System.out.println(photoElements);
 //			
 //			for(int j=0; j<photoElements.size();j++) {
 //				
 //			Element articleElement = photoElements.get(j);
-//			//System.out.println(articleElement);
 //			Elements aElements = articleElement.select("a");
 //			Element aElement = aElements.get(0);
-//			//System.out.println(aElements);
 //			
 //			String newsUrl = aElement.attr("href");		
-//			//System.out.println(newsUrl);
-//			
+//
+//			//title
 //			Element imgElement = aElement.select("img").get(0);
 //			String imgUrl = imgElement.attr("src");
-//			//System.out.println(imgUrl);
-//			
 //			String title= imgElement.attr("alt");
-//			//System.out.println(title);
-//			
-//			Document detailDoc = null;
-//			try {
-//				detailDoc = Jsoup.connect(newsUrl).get();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+//		
+//			//content
+//			Document detailDoc = Jsoup.connect(newsUrl).get();
 //			Element contentElenment = detailDoc.getElementById("dic_area");
 //			String content = contentElenment.text();
-////			
-//			System.out.println(title);
-//			System.out.println(content);
-//			System.out.println();
 //			
 //			Naver n = new Naver();
 //			n.naverInsert(title, content);
@@ -141,8 +127,10 @@ public class Naver {
 //		}//for i
 		
 		Naver n = new Naver();
-//		n.naverListData();
-		n.getConnection();
+		n.naverListData();
+
+		
+		
 	}//main
 
 }
