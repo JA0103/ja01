@@ -23,6 +23,7 @@ public class Naver {
 			try {
 				
 				Class.forName("com.mysql.cj.jdbc.Driver");
+//				System.out.println("등록ok");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -31,6 +32,7 @@ public class Naver {
 		public void getConnection() {
 			try {
 				con = DriverManager.getConnection(URL,"root","1234");  //경로, 아이디, 비번
+//				System.out.println("연결ok");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -78,22 +80,44 @@ public class Naver {
 				psmt.setString(2, content);
 				
 				psmt.executeUpdate();
-				System.out.println("ok");
+				System.out.println("추가ok");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
 				disConnection();
 			}
 		}
-
-
+		//선택
+		public void naverSelect(int id) {
+			try {
+				
+				getConnection();
+				String sql = "select * from news where id = ? ";
+				
+				psmt = con.prepareStatement(sql);
+				
+				psmt.setInt(1, id);
+				
+				ResultSet rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					System.out.println(rs.getInt(1) 
+							+ ". <" + rs.getString(2)
+							+ "> \n" + rs.getString(3) + " \n");
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 
 	public static void main(String[] args) throws IOException {
-//		int pages =1;
+//		int pages =2;
 //		
 //		for(int i=1; i<=pages;i++) {
 //		
-//			String url = "https://news.naver.com/main/list.naver?mode=LS2D&sid2=249&sid1=102&mid=shm&date=20220509&page="+i;
+//			String url = "https://news.naver.com/main/list.naver?mode=LS2D&sid2=249&sid1=102&mid=shm&date=20220516&page="+i;
 //			
 //			Document doc = Jsoup.connect(url).get();
 //			
@@ -127,9 +151,11 @@ public class Naver {
 //		}//for i
 		
 		Naver n = new Naver();
-		n.naverListData();
-
-		
+//		n.naverListData();
+		n.naverSelect(1);
+		n.naverSelect(2);
+		n.naverSelect(3);
+	
 		
 	}//main
 
