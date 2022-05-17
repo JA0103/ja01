@@ -136,7 +136,7 @@ where COMMISSION_PCT is not null;
  Like '%data'     -->  data로 끝나는 문자열
  Like '%data%'    -->  data가 포함된 문자열
  Like 'data____'  -->  data로 시작하는 8개 문자열
-            4개
+      (4개 + 4개)
  Like '____data'  -->  data로 끝나는 8개 문자열
 */
 
@@ -151,6 +151,19 @@ where STREET_ADDRESS like '%St';
 select *
 from LOCATIONS
 where city like 'South____';
+
+select * from LOCATIONS;
+
+select *
+from LOCATIONS
+where city like '%San%';
+
+select *
+from JOB_HISTORY
+where START_DATE > '01/01/13';
+
+
+
 
 
 
