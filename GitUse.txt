@@ -94,10 +94,10 @@ https://naver.me/xtTrPgdg
 3. 디벨로퍼 실행 후 system /1234로 하나 접속
 
 4. 워크시트에 alter user scott identified by tiger;   ===> 에러나면 7번으로
-    -> scott / tiger 로 하나 만들어주기 (다른거 만들때도 이렇게 해주면 됨)
+    -> scott(이름) / tiger(비번) 
 
 5. grant connect, resource to scott;
-    -> 권한주기 (이건 scott만)
+    -> 권한주기 (scott만)
 
 6. 접속 되는지 해보고 워크시트에 명령어들 쳐보기~!
 
@@ -116,7 +116,12 @@ https://naver.me/xtTrPgdg
 
 
 
-====> 끝! 이제 hr로 하나 만들어주고 거기서 연습하기!
+====> hr 계정 접속
+1. system 워크시트에서 
+2. alter user hr account unlock;  
+3. alter user hr identified by 1234;
+
+
 
 
 
