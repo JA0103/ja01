@@ -82,3 +82,47 @@ github.com/sinaboro/Ezen01
 강사님 공유폴더 주소
 https://naver.me/xtTrPgdg
 비번 1234
+
+
+==============================================
+오라클SQL  설치
+
+1. 오라클XE 설치
+
+2. sqldeveloper 설치
+
+3. 디벨로퍼 실행 후 system /1234로 하나 접속
+
+4. 워크시트에 alter user scott identified by tiger;   ===> 에러나면 7번으로
+    -> scott(이름) / tiger(비번) 
+
+5. grant connect, resource to scott;
+    -> 권한주기 (scott만)
+
+6. 접속 되는지 해보고 워크시트에 명령어들 쳐보기~!
+
+-----------------------
+7. cmd 창에 sqlplus 쳐서 일단 설치 제대로 됐는지 확인
+
+8. sqlplus system/1234 로 연결 (사용자 이름,비번 둘이 맞지 않으면
+   에러가 뜬다!! 비밀번호 잘 기억하기!! )
+
+9. @C:\oraclexe\app\oracle\product\11.2.0\server\rdbms\admin\scott.sql
+    -> 오라클 설치파일에 scott.sql 경로 (그냥 위에거 복붙ㅇ)
+
+10. alter user scott identified by tiger;
+
+11. grant connect, resource to scott;
+
+
+
+====> hr 계정 접속
+1. system 워크시트에서 
+2. alter user hr account unlock;  
+3. alter user hr identified by 1234;
+
+
+
+
+
+
