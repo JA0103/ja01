@@ -297,6 +297,9 @@ from EMPLOYEES;
 select first_name, last_name, concat(first_name, concat(' ', last_name)) as fName
 from EMPLOYEES;  --concat : 문자열 두 개 결합
 
+select first_name || ' ' || last_name as fName
+from EMPLOYEES;  -- || 연산자를 이용해서 할 수도 있음!
+
 
 select first_name, LENGTH(first_name)  --length : 길이
 from EMPLOYEES;
