@@ -710,4 +710,5 @@ from countries C, locations L
 where L.COUNTRY_ID(+) = C.COUNTRY_ID;
 
 select *from COUNTRIES;
+select *from LOCATIONS;
 
