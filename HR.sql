@@ -712,3 +712,113 @@ where L.COUNTRY_ID(+) = C.COUNTRY_ID;
 select *from COUNTRIES;
 select *from LOCATIONS;
 
+/*
+countries 테이블과 locations 테이블을 locations의 country_id를 기준으로
+외부 조인하여 country_id, country_name, city를 조회
+*/
+select C.COUNTRY_ID, C.COUNTRY_NAME, L.CITY
+from COUNTRIES C, LOCATIONS L
+where L.COUNTRY_ID(+) = C.COUNTRY_ID;
+
+
+
+/*
+employees 테이블과 departments 테이블을 
+departments 테이블의 department_id를 기준으로 외부조인하여 
+employee_id, first_name, last_name, department_name을 
+employee_id를 기준으로 정렬하여 조회
+*/
+select E.employee_id, E.first_name, E.last_name, D.department_name
+from EMPLOYEES E, DEPARTMENTS D
+where D.DEPARTMENT_ID(+) = E.DEPARTMENT_ID
+order by E.employee_id;
+
+select * from DEPARTMENTS;
+
+
+/*
+employees 테이블을 manager_id와 employee_id를 기준으로 자체조인 한 뒤에
+직원의 first_name과 last_name을 결합하고 관리자의 first_name과 last_name을 결합하여
+employees_id를 기준으로 정렬하여 조회
+*/
+select concat(M.first_name, ' ' || M.last_name)as manager, 
+    concat(E.first_name, ' ' ||  E.last_name)as name
+from employees E, employees M
+where M.employee_id = E.manager_id
+order by M.employee_id;
+
+
+/*
+    서브 쿼리 
+    >> 단일 행 서브 쿼리
+    =  <>  !=  >  >=  <  <=   다 가능
+*/
+select PHONE_NUMBER
+from employees
+where employee_id =100;
+
+select *
+from EMPLOYEES
+where PHONE_NUMBER = '515.123.4567';
+
+select *
+from EMPLOYEES
+where PHONE_NUMBER =(
+    select PHONE_NUMBER
+    from employees
+    where employee_id =100
+);
+
+select hire_date
+from EMPLOYEES
+where email = 'SKING';
+
+select *
+from EMPLOYEES
+where hire_date = '03/06/17';
+
+select *
+from EMPLOYEES
+where hire_date < (
+    select hire_date
+    from EMPLOYEES
+    where email = 'SKING'
+);
+
+select first_name, SALARY
+from EMPLOYEES
+where salary < (
+    select salary
+    from EMPLOYEES
+    where employee_id = 100
+)
+order by SALARY;
+
+
+-- hire_date 06/01/03 --> salary
+select *
+from EMPLOYEES
+where salary = (
+    select SALARY
+    from employees
+    where hire_date = '06/01/03'
+);
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
