@@ -859,6 +859,47 @@ where salary > any(
                                           -- 메인 쿼리의 데이터 노출 여부를 결정해야 할 때 사용
 
 
+/*
+departments 테이블에서 department_name이 'IT'인
+department_id와 일치하는 employees테이블의 
+first_name, last_name, job_id, salary를 조회
+*/
+select first_name, last_name, job_id, salary, DEPARTMENT_ID
+from EMPLOYEES
+where department_id = (select department_id
+                        from DEPARTMENTS
+                        where department_name = 'IT'
+                        );
+
+
+/*
+locations 테이블에서 state_province이 'California'인
+location_id와 일치하는 departments 테이블의 
+department_id, department_name을 조회
+*/
+select department_id, department_name, LOCATION_ID
+from DEPARTMENTS
+where LOCATION_ID = (select location_id
+                    from LOCATIONS
+                    where state_province = 'California'
+                    );
+
+/*
+countries 테이블에서 region_id 가 3인 country_id가 포함된
+locations 테이블의 city, state_province, street_address를 조회
+*/
+select city, state_province, street_address , COUNTRY_ID
+from locations
+where COUNTRY_ID in (select country_id
+                    from COUNTRIES
+                    where region_id = 3);
+
+
+
+
+
+
+
 
 
 
