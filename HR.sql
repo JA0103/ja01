@@ -804,9 +804,68 @@ where salary = (
     where hire_date = '06/01/03'
 );
 
+/*  다중 서브쿼리  */
+
+select max(salary)
+from employees
+group by department_id;
+
+select *from EMPLOYEES;
+
+select employee_id,  max(salary)
+from employees
+group by department_id , EMPLOYEE_ID;
+
+select * from EMPLOYEES 
+where salary in (
+    select max(salary)
+    from employees
+    group by department_id
+);
+
+select * from EMPLOYEES 
+where salary not in (
+    select max(salary)
+    from employees
+    group by department_id
+)
+order by SALARY;
 
 
-    
+/* EXISTS () 괄호 안이 트루이면    */
+select*
+from EMPLOYEES
+where EXISTS (
+    select *
+    from EMPLOYEES
+    where employee_id=100
+);
+
+--any/some () : () 중 하나라도 만족시키면 true
+select *
+from EMPLOYEES
+where salary <> any(6000,10000,12000);
+
+select *
+from EMPLOYEES
+where salary > any(
+    select salary
+    from EMPLOYEES
+    where hire_date > '08/01/01'
+);
+
+--all() : ()안을 다 만족시켜야 함
+--exists() : ()안에 값이 하나라도 존재하면 true >> 특정 서브쿼리 결과 값의 존재 유무를 통해 
+                                          -- 메인 쿼리의 데이터 노출 여부를 결정해야 할 때 사용
+
+
+
+
+
+
+
+
+
 
 
 

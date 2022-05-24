@@ -1,4 +1,4 @@
-package unit05;
+package unit09;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,25 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/ParamServlet")
-public class ParamServlet extends HttpServlet {
+@WebServlet("/CheckboxServlet")
+public class CheckboxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		
-		String id = request.getParameter("id");
-		int age = Integer.parseInt( request.getParameter("age") );
-		
 		PrintWriter out = response.getWriter();
 		out.print("<html><body>");
-		out.print("당신이 입력한 정보입니다.<br>");
-		out.println("id = " + id );
-		out.println("<br>age = " + age);
+		String items[] = request.getParameterValues("item");
+		if(items ==null) {
+			out.print("선택한 항목이 없습니다.");
+		}else {
+			out.print("당신이 선택한 항목입니다.<hr>");
+			for(String item : items) {
+				out.print(item + " ");
+			}
+		}
 		out.print("<br><a href='javascript:history.go(-1)'>다시</a>");
 		out.print("</body></html>");
+		out.close();
 	}
 
 }

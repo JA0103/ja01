@@ -21,7 +21,7 @@ public class CalServlet extends HttpServlet {
 		}catch(Exception e) {
 			PrintWriter out = response.getWriter();
 			out.print("다시 입력해주십시오."); 
-			out.print("<a href= \"web-study-02/CalTest.jsp\"> ");
+			out.print("<a href= 'web-study-02/CalTest.jsp'>뒤로가기</a> ");
 		}
 		response.setContentType("text/html; charset=utf-8");
 		
