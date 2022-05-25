@@ -894,31 +894,122 @@ where COUNTRY_ID in (select country_id
                     from COUNTRIES
                     where region_id = 3);
 
+/*
+departments 테이블에서 manager_id가 null이 아닌
+department_id와 일치하는 employees 테이블의 
+first_name, last_name, job_id, salary를 조회
+*/
+select FIRST_NAME, LAST_NAME, JOB_ID, SALARY
+from EMPLOYEES
+where DEPARTMENT_ID in (select department_id
+                        from DEPARTMENTS
+                        where manager_id is not null);
+-- selet() 안에 데이터가 하나면 = 이걸로 해줄 수 있지만 여러개면 in 으로 찾아야 한다.
 
+/*
+    locations 테이블에서 city가 'Seattle'를 포함하지 않는
+    location_id와 일치하는 departments 테이블의 
+    department_id, department_name을 조회
+*/
+select department_id, department_name, location_id
+from DEPARTMENTS
+where LOCATION_ID in ( select location_id
+                    from LOCATIONS
+                    where city not in 'Seattle');
 
+select city
+from LOCATIONS;
 
+/*
+regions 테이블에서 region_name 이 'Europe'인 region_id가
+일치하는 countries 테이블에서 country_id가 포함된 locations 테이블의
+city, state_province, street_address를 조회
+*/
+select city, state_province, street_address
+from LOCATIONS
+where COUNTRY_ID in ( select COUNTRIES.COUNTRY_ID
+                        from COUNTRIES
+                        where region_id = (select region_id
+                                            from REGIONS
+                                            where region_name = 'Europe'));
 
+/*
+DML(data manipulation language)
+select
+insert
+update
+delete
+CRUD ( creat(생성) read(읽기) update(갱신) delete(삭제) )
+*/
 
+select * from COUNTRIES;
 
+insert into COUNTRIES
+values ('KR', 'North Korea', '3');
 
+insert into COUNTRIES (country_id, country_name, region_id)
+values('KP', 'South Korea' , 3);
 
+insert into COUNTRIES (country_id, country_name)
+values('KM', 'South Korea' );
 
+commit;
 
+update COUNTRIES
+set COUNTRY_NAME =  'South Korea'
+where COUNTRY_ID = 'KR';
 
+update COUNTRIES
+set COUNTRY_NAME = 'North korea'
+where COUNTRY_ID = 'KP';
 
+select * from COUNTRIES;
 
+select * 
+from jobs
+where  job_id = 'IT_PROG';
 
+update jobs
+set min_salary = 10000, MAX_SALARY = 20000
+where job_id = 'IT_PROG';
 
+delete 
+from COUNTRIES
+where COUNTRY_ID = 'KM';
 
+/*
+countries 테이븡
+country_id country_name region_id
+AT Austria 1
+NO Norway 1
+ID Indonesia 3
+TR Turkey 4
+*/
 
+select * from COUNTRIES;
 
+insert into COUNTRIES (country_id, country_name, region_id)
+values('AT', 'Austria', 1);
 
+insert into COUNTRIES (country_id, country_name, region_id)
+values('NO', 'Norway', 1);
 
+insert into COUNTRIES (country_id, country_name, region_id)
+values('ID', 'Indonesia', 3);
 
+insert into COUNTRIES (country_id, country_name, region_id)
+values('TR', 'Turkey', 4);
 
+/*
+countries 테이븡
+country_id country_name region_id
+AT Austria 1+10
+NO Norway 1+10
+ID Indonesia 3+10
+TR Turkey 4+10
+*/
+update COUNTRIES
+set REGION_ID = region_id + 10
+where COUNTRY_ID in ('AT','NO','ID','TR') ;
 
-
-
-
-
-
+select* from COUNTRIES;
