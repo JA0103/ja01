@@ -33,10 +33,14 @@
 		for(String season : seasonArr){
 			int n = Integer.parseInt(season);
 			switch(n){
-			case 1: out.println("<b>봄</b>입니다.");
-			case 2: out.println("<b>여름</b>입니다.");
-			case 3: out.println("<b>가을</b>입니다.");
-			case 4: out.println("<b>겨울</b>입니다.");
+				case 1: out.println("<b>봄</b>입니다.");
+					break;
+				case 2: out.println("<b>여름</b>입니다.");
+					break;
+				case 3: out.println("<b>가을</b>입니다.");
+					break;
+				case 4: out.println("<b>겨울</b>입니다.");
+					break;
 			}
 		}
 	%>
