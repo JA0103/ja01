@@ -978,7 +978,7 @@ from COUNTRIES
 where COUNTRY_ID = 'KM';
 
 /*
-countries 테이븡
+countries 테이블
 country_id country_name region_id
 AT Austria 1
 NO Norway 1
@@ -1001,7 +1001,7 @@ insert into COUNTRIES (country_id, country_name, region_id)
 values('TR', 'Turkey', 4);
 
 /*
-countries 테이븡
+countries 테이블
 country_id country_name region_id
 AT Austria 1+10
 NO Norway 1+10
@@ -1013,3 +1013,5 @@ set REGION_ID = region_id + 10
 where COUNTRY_ID in ('AT','NO','ID','TR') ;
 
 select* from COUNTRIES;
+
+--  >>  220526 SCOTT.sql 
