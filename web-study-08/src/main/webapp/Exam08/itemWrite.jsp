@@ -43,7 +43,7 @@
 %>			
 		<tr>
 			<td><%=rs.getString(1) %></td>
-			<td><%=rs.getString(2) %></td>
+			<td><%=rs.getInt(2) %></td>
 			<td><%=rs.getString(3) %></td>
 		</tr>
 <%			

@@ -32,7 +32,7 @@
 		pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, name);
-		pstmt.setString(2, price);
+		pstmt.setInt(2, Integer.parseInt(price));
 		pstmt.setString(3, description);
 		
 		pstmt.executeUpdate();
