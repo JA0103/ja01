@@ -1020,3 +1020,10 @@ where COUNTRY_ID in ('AT','NO','ID','TR') ;
 select* from COUNTRIES;
 
 --  >>  220526 SCOTT.sql 
+
+
+
+
+
+
+
