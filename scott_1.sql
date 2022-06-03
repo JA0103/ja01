@@ -148,8 +148,7 @@ truncate table emp_rename;
 --     ¾êµµ ·Ñ¹é ¾ÈµÊ!!!
 drop table emp_rename;
 
-
-
-
-
+select * from member;
+delete from member
+where USERID = 'somi3';
 

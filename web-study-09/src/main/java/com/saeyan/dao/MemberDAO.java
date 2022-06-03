@@ -113,7 +113,7 @@ public class MemberDAO {
 	public int confirmID(String userid) {
 		
 		int result = 1;
-		
+					//아이디가 검색 된다는 말은 데이터가 중복 된다는 것, 검색안되면 중복이 아니다.
 		String sql = "select userid from member where userid = ? ";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -145,6 +145,73 @@ public class MemberDAO {
 		}
 		
 		return result;
+	}
+
+	public int insertMember(MemberVO mVo) {
+		
+		int result = -1;
+		String sql = "insert into member(name, userid, pwd, email, phone,admin)"
+				+ "values(?,?,?,?,?,?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mVo.getName());
+			pstmt.setString(2, mVo.getUserid());
+			pstmt.setString(3, mVo.getPwd());
+			pstmt.setString(4, mVo.getEmail());
+			pstmt.setString(5, mVo.getPhone());
+			pstmt.setInt(6, mVo.getAdmin());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+
+	public void updateMember(MemberVO mVo) {
+	
+		int result = -1;
+		String sql = "update member set pwd=?,email=?,phone=?,admin=? where userid=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mVo.getPwd());
+			pstmt.setString(2, mVo.getEmail());
+			pstmt.setString(3, mVo.getPhone());
+			pstmt.setInt(4, mVo.getAdmin());
+			pstmt.setString(5, mVo.getUserid());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
 	}
 }
 

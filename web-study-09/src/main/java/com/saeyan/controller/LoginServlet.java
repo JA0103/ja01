@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "member/login.jsp";
+		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginUser") != null) {
 			url = "main.jsp";
@@ -37,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		
 		MemberDAO mDao = MemberDAO.getInstance();
+		
 		int result = mDao.userCheck(userid,pwd);
 		
 		

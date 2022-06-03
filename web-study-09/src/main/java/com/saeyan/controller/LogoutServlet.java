@@ -8,33 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.saeyan.dao.MemberDAO;
-
-
-@WebServlet("/idCheck.do")
-public class idCheckServlet extends HttpServlet {
+@WebServlet("/logout.do")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.invalidate();
 		
-		String userid = request.getParameter("userid");
-		
-		MemberDAO mDao = MemberDAO.getInstance();
-		
-		int result = mDao.confirmID(userid);
-		
-		request.setAttribute("userid", userid);
-		request.setAttribute("result", result);
-		
-		RequestDispatcher dis = request.getRequestDispatcher("member/idCheck.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("member/login.jsp");
 		dis.forward(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doGet(request,response);
 	}
+
 
 }
