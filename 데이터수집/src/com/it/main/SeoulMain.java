@@ -8,11 +8,10 @@ import com.it.dao.*;
 public class SeoulMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
         SeoulMain sm = new SeoulMain();
-        sm.seoulAttractions();
+        //sm.seoulAttractions();
         //sm.seoulNature();
-        //sm.seoulHotel();
+        sm.seoulHotel();
 	}
 	
 	public void seoulAttractions()
@@ -23,8 +22,8 @@ public class SeoulMain {
 			int k=1;
 			for(int i=1;i<=35;i++)
 			{
-			   Document doc=Jsoup.connect("https://korean.visitseoul.net/attractions?curPage="+i).get();
-			   Elements poster=doc.select("ul.article-list li.item div.thumb");
+			   Document doc=Jsoup.connect("https://korean.visitseoul.net/attractions?curPage="+i).get(); 
+			   Elements poster=doc.select("ul.article-list li.item div.thumb"); 
 			   Elements comment=doc.select("ul.article-list li.item div.infor-element span.text-dot-d");
 			   Elements link=doc.select("ul.article-list li.item a");
 			   Elements title=doc.select("ul.article-list li.item div.infor-element span.title");
@@ -33,25 +32,32 @@ public class SeoulMain {
 				   try{
 					   System.out.println("번호:"+k);
 					   System.out.println(title.get(j).text());
-					   System.out.println(poster.get(j).attr("style"));
+					   //text() : HTML에서 텍스트만 불러옴(자바스크립트 코드는 생략된다.)
+					   System.out.println(poster.get(j).attr("style")); 
+					   //attr("style") : element attr메서드를 통해 필요한부분(style)만 가져올 수 있습니다. 
 					   System.out.println(comment.get(j).text());
 					   System.out.println(link.get(j).attr("href"));
+
 					   Document doc2=Jsoup.connect("https://korean.visitseoul.net"+link.get(j).attr("href")).get();
 					   Element address=doc2.select("div.detail-map-infor:eq(1) dl dd").get(0);
+					   //eq() : index 값을 사용해 원하는 위치의 요소를 선택해 가져올 수 있는 선택자 메소드.
 					   System.out.println("주소:"+address.text());
 					   System.out.println("=========================================================");
 				       
-					   SeoulLocationVO vo=new SeoulLocationVO();
-					   vo.setNo(k);
-					   vo.setTitle(title.get(j).text());
-					   vo.setMsg(comment.get(j).text());
-					   String image=poster.get(j).attr("style");
+					   //DB저장
+					   SeoulLocationVO vo=new SeoulLocationVO();//SeoulLocationVO 객체 생성
+					   vo.setNo(k); //숫자 1부터  SeoulLocationVO 변수에 저장
+					   vo.setTitle(title.get(j).text()); //title을 차례대로 글자만 가져와서 set.
+					   vo.setMsg(comment.get(j).text()); //comment도 차례대로 글자만 가져와서 set
+					   String image=poster.get(j).attr("style"); //이미지 url을 스트링 변수 image에 차례대로 넣어준다. 
 					   image=image.substring(image.indexOf("(")+1,image.lastIndexOf(")"));
+					   //substring : 문자열 자르는 메소드 (시작,끝) 시작은 포함-> +1을 해줌. 끝은 미포함.
+					   //"(" 와 ")" 사이의 문자열을 잘라서 image에 저장
 					   // style="background-image:url(/comm/getImage?srvcId=POST&amp;parentSn=5548&amp;fileTy=POSTTHUMB&amp;fileNo=1&amp;thumbTy=M)"
 					   image="https://korean.visitseoul.net"+image;
-					   vo.setPoster(image);
+					   vo.setPoster(image); 
 					   vo.setAddress(address.text());
-					   dao.seoulLocationInsert(vo);
+					   dao.seoulLocationInsert(vo);// 디비에 넣어줌
 					   k++;
 				   }catch(Exception ex) {}
 			   }
