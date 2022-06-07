@@ -7,24 +7,28 @@
 	String no = request.getParameter("no");
 	String pwd = request.getParameter("pwd");
 	
-	boolean result = dao.boardDelete(Integer.parseInt(no),pwd);
+	int result = dao.boardDelete(Integer.parseInt(no), pwd);
 %>
-
-<%=result %>
-<%
-	if(result==true){
-%>
-		<script>
-			alert("데이터가 삭제되었습니다.");
-			location.href="list.jsp";
-		</script>
-<%
-	}else{
-%>
-		<script>
-			alert("비밀번호가 틀립니다.")
-			history.back();
-		</script>
-<%
-	}
-%>
+<%=result%>	
+	
+<%-- 	<%	
+		if(result==true){
+	%>
+	
+	
+			<script>
+				alert("데이터가 삭제되었습니다.");
+				location.href="list.jsp";
+			</script> 
+	<%
+		}else{
+	%>
+			<script>
+				alert("비밀번호가 틀렸습니다.");
+				history.back();
+			</script> 
+			
+	<%
+		}
+	%> --%>
+	
