@@ -1,4 +1,4 @@
-use db0416;
+
 
 create table seoul_hotel(
 	no int,
@@ -38,3 +38,4 @@ desc seoul_nature;
 select * from seoul_location;
 select * from seoul_nature;
 select * from seoul_hotel;
+

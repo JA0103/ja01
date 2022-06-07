@@ -134,11 +134,7 @@ public class BoardDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			try {
 				disConnection();
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
 		}
 	}
 	
@@ -183,22 +179,126 @@ public class BoardDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			try {
 				disConnection();
-			}catch(Exception e) {
-				e.printStackTrace();
+		}
+		
+		return vo;
+	}
+	
+	//수정하기(Update)
+	public BoardVO boardUpdateData(int no) {
+		BoardVO vo = new BoardVO();
+		
+		try {
+			
+			getConnection();
+			
+			String sql = "select no,name,subject,content, DATE_FORMAT(regdate,'%Y-%m-%d'),hit "
+					+ "from jspBoard where no =?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, no);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				vo.setNo(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setSubject(rs.getString(3));
+				vo.setContent(rs.getString(4));
+				vo.setDbday(rs.getString(5));
+				vo.setHit(rs.getInt(6));
+				rs.close();
 			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+				disConnection();
 		}
 		
 		return vo;
 	}
 	
 	
+	public boolean boardUpdate(BoardVO vo) {
+		boolean chk = false;
+		
+		try {
+			
+			getConnection();
+			String sql = "select pwd from jspBoard where no =?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, vo.getNo());
+			ResultSet rs = ps.executeQuery();
+			
+			String chk_pwd = "";
+			if(rs.next()){
+				chk_pwd = rs.getString(1);
+				rs.close();
+			}
+			
+			if(chk_pwd.equals(vo.getPwd())){
+				chk=true;
+				sql="update jspBoard set name = ?, subject = ?, content = ? where no = ?";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, vo.getName());
+				ps.setString(2, vo.getSubject());
+				ps.setString(3, vo.getContent());
+				ps.setInt(4, vo.getNo());
+				
+				ps.executeUpdate();
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+				disConnection();
+		}
+		
+		return chk;
+	}
 	
 	
 	
-	
-	
+	public boolean boardDelete(int no, String pwd) {
+		boolean chk = false;
+		
+		try {
+			
+			getConnection();
+			String sql = "select pwd from jspBoard where no =?";
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, no);
+			ResultSet rs = ps.executeQuery();
+			
+			String chk_pwd = "";
+			if(rs.next()){
+				chk_pwd = rs.getString(1);
+				rs.close();
+			}
+			
+			if(chk_pwd.equals(pwd)){
+				chk =true;
+				
+				sql="delete from jspBoard where no = ?";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				ps.executeUpdate();
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+		
+		return chk;
+	}
 	
 	
 	
