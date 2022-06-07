@@ -53,8 +53,8 @@ public class BoardDAO {
 			int start = (rowSize*page) - rowSize;
 			//10*1 - 10 = 0,10 .... 10*2 - 10 =10..10  10*3-10=20,10
 			
-			String sql = "select no, subject, name, DATE_FORMAT(regdate, '%Y-%m-%d'),hit"
-					+ "from jspBoard order by no desc limit ?, ?";
+			String sql = "select no, subject, name, DATE_FORMAT(regdate, '%Y-%m-%d'),hit "
+					+ "from jspBoard order by no desc limit ?, ? ";
 			//3. 전송
 			ps = conn.prepareStatement(sql);
 			
@@ -110,6 +110,100 @@ public class BoardDAO {
 		}
 		return total;
 	}
+	
+	
+	//3. Insert(새글 입력)
+	public void boardInsert(BoardVO vo) {
+		
+		String sql = "insert into jspBoard (name,subject,content,pwd,regdate) "
+				+ "values(?,?,?,?,now()) ";
+		
+		try {
+			//1. 연결
+			getConnection();
+			//2. sql문장 작성
+			ps = conn.prepareStatement(sql);
+			//3. 빈칸 채우기
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getSubject());
+			ps.setString(3, vo.getContent());
+			ps.setString(4, vo.getPwd());
+			//4. 실행
+			ps.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				disConnection();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
+	//상세보기 (조회수 담당)
+	public BoardVO boardDetailDate(int no) {
+		BoardVO vo = new BoardVO();
+		
+		try {
+		
+			getConnection();
+			
+			//* 조회수 증가
+			String sql = "update jspBoard set hit = hit+1 "
+					+ "where no = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ps.executeUpdate();
+			
+			
+			sql = "select no,name,subject,content, DATE_FORMAT(regdate,'%Y-%m-%d'),hit "
+					+ "from jspBoard where no =?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, no);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				vo.setNo(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setSubject(rs.getString(3));
+				vo.setContent(rs.getString(4));
+				vo.setDbday(rs.getString(5));
+				vo.setHit(rs.getInt(6));
+				rs.close();
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				disConnection();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return vo;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
