@@ -15,6 +15,6 @@ insert into jspBoard(name, subject,content, pwd, regdate)
 values('홍길동', '홍길동전','재미있는 홍길동', '1234',now());
 
 select * from jspboard;
-
+select subject from jspBoard where subject like '%홍%'; 
 commit;
 
