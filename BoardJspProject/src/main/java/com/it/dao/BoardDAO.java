@@ -51,7 +51,7 @@ public class BoardDAO {
 			//2. SQL 문장 작성
 			int rowSize = 10;
 			int start = (rowSize*page) - rowSize;
-			//10*1 - 10 = 0,10 .... 10*2 - 10 =10..10  10*3-10=20,10
+			//10*1 - 10 = 0,10 .... 10*2 - 10 =10,10  10*3-10=20,10
 			
 			String sql = "select no, subject, name, DATE_FORMAT(regdate, '%Y-%m-%d'),hit "
 					+ "from jspBoard order by no desc limit ?, ? ";
@@ -262,7 +262,7 @@ public class BoardDAO {
 	}
 	
 	
-	
+	//삭제하기
 	public int boardDelete(int no, String pwd) {
 		int result = 0;
 		
@@ -299,23 +299,6 @@ public class BoardDAO {
 		
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

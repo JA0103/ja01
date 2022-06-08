@@ -17,3 +17,4 @@ values('홍길동', '홍길동전','재미있는 홍길동', '1234',now());
 select * from jspboard;
 
 commit;
+

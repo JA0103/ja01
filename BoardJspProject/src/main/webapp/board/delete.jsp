@@ -11,16 +11,16 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
-.container{
-  margin-top: 50px;
-}
-.row {
-  margin: 0px auto;
-  width: 350px;
-}
-h1 {
-   text-align: center;
-}
+	.container{
+	  margin-top: 50px;
+	}
+	.row {
+	  margin: 0px auto;
+	  width: 350px;
+	}
+	h1 {
+	   text-align: center;
+	}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">

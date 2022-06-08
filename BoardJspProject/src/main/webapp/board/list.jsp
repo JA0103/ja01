@@ -11,7 +11,7 @@
    }
    int curpage = Integer.parseInt(strpage);
    
-   //2. 데이타베이스로 부터 데이터를 읽어 온다
+   //2. 데이터베이스로 부터 데이터를 읽어 온다
    List<BoardVO> list = dao.boardListData(curpage);
    int totalPage = dao.boardTotalPage();
    
@@ -119,25 +119,6 @@
       	</div>
       </div>
    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 
