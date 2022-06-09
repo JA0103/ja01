@@ -190,23 +190,30 @@ public class memberDAO {
 				getConnection();
 				
 
-				String sql = "select custno from money_tbl_02 ";
+				//String sql = "select custno from money_tbl_02 ";
+				
+				String sql = "select  D.custno, D.custname, D.grade, sum(price) "
+						+ "from MONEY_TBL_02 N , MEMBER_TBL_02 D "
+						+ "where N.custno = D.custno "
+						+ "group by D.CUSTNO, D.custname, D.grade "
+						+ "order by sum(price) desc ";
+				
 				ps = conn.prepareStatement(sql);
 				
 				ResultSet rs = ps.executeQuery();
-				
-				while(rs.next()) rs.getInt(1);
-				
-				sql = "select sum(price) from money_tbl_02 where custno =? ";
-				
-				ps = conn.prepareStatement(sql);
-				ps.setInt(1, rs.getInt(1));
-				rs = ps.executeQuery();
+				String grade = "직원";
 				
 				while(rs.next()) {
 					memberVO vo = new memberVO();
-					vo.setPrice((rs.getInt(1)));
+					vo.setCustno(rs.getInt(1));
+					vo.setCustname(rs.getString(2));
+					if(rs.getString(3).equals("A")) grade = "VIP";
+					else if(rs.getString(3).equals("B")) grade = "일반";
+					vo.setGrade(grade);
+					vo.setPrice(rs.getInt(4));
+					list.add(vo);
 				}
+				rs.close();
 				
 				
 			}catch(Exception e) {

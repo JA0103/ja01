@@ -64,7 +64,7 @@
             <tr>
                <td class="text-center" ><%=vo.getCustno() %></td>
                <td class="text-center" ><%=vo.getCustname()%></td>
-               <td class="text-center" ></td>
+               <td class="text-center" ><%=vo.getGrade()%></td>
                <td class="text-center" ><%=vo.getPrice()%></td>
             </tr>
             <%      

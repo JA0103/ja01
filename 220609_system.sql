@@ -122,14 +122,26 @@ insert into money_tbl_02 values(10004, 20160008, 300, 1, 300, 'A005', '20160104'
 insert into money_tbl_02 values(10004, 20160009, 600, 1, 600, 'A006', '20160104');
 insert into money_tbl_02 values(10004, 20160010, 3000, 1, 3000, 'A007', '20160106');
 
-select price
+select custno, D.custno, D.custname, D.grade, N.price
 from MONEY_TBL_02 N , MEMBER_TBL_02 D
 where N.custno = D.custno 
-and N.PRICE = ( select (A.price+B.price) , A.custno
-                     from MONEY_TBL_02 A, MONEY_TBL_02 B 
-                     where A.custno = B.custno)
+
 order by D.custno ;
 
+select  D.custno, D.custname, D.grade, sum(price)
+from MONEY_TBL_02 N , MEMBER_TBL_02 D
+where N.custno = D.custno
+group by D.CUSTNO, D.custname, D.grade
+order by sum(price) desc;
+
+
+select sum(price)
+from MONEY_TBL_02
+where custno = 10001;
+
+select sum(price) 
+from money_tbl_02
+where CUSTNO=10001;
 
 commit;
 
