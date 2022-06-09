@@ -7,7 +7,7 @@
 	
 	// 데이터베이스로 부터 데이터를 읽어 온다
 	List<memberVO> price = dao.memberSalse(); 
-	
+	 
 %>
 <!DOCTYPE html>
 <html>
