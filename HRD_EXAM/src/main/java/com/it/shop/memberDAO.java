@@ -94,6 +94,7 @@ public class memberDAO {
 				
 				
 				ResultSet rs = ps.executeQuery();
+				String grade = "직원";
 				
 				while(rs.next()) {
 					memberVO vo = new memberVO();
@@ -102,7 +103,9 @@ public class memberDAO {
 					vo.setPhone(rs.getString(3));
 					vo.setAddress(rs.getString(4));
 					vo.setJoindate(rs.getString(5));
-					vo.setGrade(rs.getString(6));
+					if(rs.getString(6).equals("A")) grade = "VIP";
+					else if(rs.getString(6).equals("B")) grade = "일반";
+					vo.setGrade(grade);
 					vo.setCity(rs.getString(7));
 					list.add(vo);
 				}
@@ -244,7 +247,72 @@ public class memberDAO {
 			return custno;
 		} //end of seqCustno
 		
-		
+		//검색
+		public List<memberVO> memberSearch(String search){
+			List<memberVO> list = new ArrayList<memberVO>();
+			
+			try {
+				
+				getConnection();
+				String sql = "select * from member_tbl_02 where address like ? ";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, "%"+search+"%");
+				ResultSet rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					memberVO vo = new memberVO();
+					vo.setCustno(rs.getInt(1));
+					vo.setCustname(rs.getString(2));
+					vo.setPhone(rs.getString(3));
+					vo.setAddress(rs.getString(4));
+					vo.setJoindate(rs.getString(5));
+					vo.setGrade(rs.getString(6));
+					vo.setCity(rs.getString(7));
+					list.add(vo);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				disConnection();
+			}
+			
+			return list;
+		}
+		//검색
+		public boolean memberSearch_chk(String search){
+			boolean result = false;
+			
+			try {
+				
+				getConnection();
+				String sql = "select * from member_tbl_02 where address like ? ";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, "%"+search+"%");
+				ResultSet rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					result = true;
+					memberVO vo = new memberVO();
+					vo.setCustno(rs.getInt(1));
+					vo.setCustname(rs.getString(2));
+					vo.setPhone(rs.getString(3));
+					vo.setAddress(rs.getString(4));
+					vo.setJoindate(rs.getString(5));
+					vo.setGrade(rs.getString(6));
+					vo.setCity(rs.getString(7));
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				disConnection();
+			}
+			
+			return result;
+		}
 		
 		
 		

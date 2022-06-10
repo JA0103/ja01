@@ -6,37 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	
-	*{margin:0; padding:0;}
-	
-	header{ height: 150px; background-color:blue;
-		   color:white; text-align: center;  line-height: 150px;}
-		   
-    nav{height: 35px; background-color:RoyalBlue; line-height:10px;} 
-	nav ul li { float: left;  margin: 0 30px; list-style: none;}
-	nav ul li a{text-decoration: none; color: white; line-height:30px;}
  	
 	section{ height: 500px; background-color:Gainsboro; }
 	section h3{margin: 0 auto; text-align: center; line-height: 100px;}
+	section ol{padding:20px;}
 	
 	footer{color: white; height: 65px; background-color: CornflowerBlue; 
 			text-align: center; line-height: 60px;} 
 </style>
 </head>
 <body>
-
-	<header>
-		<h1>쇼핑몰 회원관리 ver1.0</h1>
-	</header>
-	 
-	<nav>
-			<ul>
-				<li><a href="insert.jsp">회원등록</a></li>
-				<li><a href="list.jsp">회원목록 조회/수정</a></li>
-				<li><a href="sales.jsp">회원매출조회</a></li>
-				<li><a href="index.jsp">홈으로.</a></li>
-			</ul>
-	</nav>
+<%@ include file="header.jsp" %>
 	
 	<section>
 	 	<h3>쇼핑몰 회원관리 프로그램</h3><br>

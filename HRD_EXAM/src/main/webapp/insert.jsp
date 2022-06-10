@@ -32,20 +32,7 @@
 </style>
 </head>
 <body>
- 
-	<header>
-		<h1>쇼핑몰 회원관리 ver1.0</h1>
-	</header>
-	
-	<nav>
-			<ul>
-				<li><a href="insert.jsp">회원등록</a></li>
-				<li><a href="list.jsp">회원목록 조회/수정</a></li>
-				<li><a href="sales.jsp">회원매출조회</a></li>
-				<li><a href="index.jsp">홈으로.</a></li>
-			</ul>
-	</nav>
-	
+<%@ include file="header.jsp" %>
 	<section>
 	 	<form action="insert_impl.jsp" method="get" name=frm>
 			<h3>홈쇼핑 회원등록</h3>
