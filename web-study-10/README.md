@@ -1,14 +1,19 @@
 WEB-STUDY-10
 
 환경
-1.windows
-2.STS (Version: 3.9.17.RELEASE)
-3.oracle 11g
-4.jdk11
-5.인코딩 utf-8
-6.git
-
-
+1. windows
+2. STS (Version: 3.9.17.RELEASE)
+3. oracle 11g
+4. jdk11
+5. 인코딩 utf-8
+6. git
+lib->(
+7. jstl.jar
+8. ojdbc6.jar
+9. standard.jar
+10. cos.jar(version:cos-22.05.zip)
+11. lombok-1.18.24.jar
+)
 
 MYSQL 테이블 생성 및 데이터 입력
 
@@ -31,4 +36,9 @@ insert into product values(product_seq.nextval, 'jQuery and jQuery Mobile : 이�
 
 commit;
 
-select * from PRODUCT;
+DBCP------------Servers/server.xml
+<Resource name="jdbc/myoracle" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+              username="scott" password="tiger" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/>
