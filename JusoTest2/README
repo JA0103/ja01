@@ -1,0 +1,11 @@
+#주소 검색 방법
+
+1. juso.go.kr
+2. api 신청
+3. url(ip) : http://localhost:8181(톰캣포트)
+4. 승인키 획득  
+5. jsp 소스 다운
+6. 5번 소스 중 : jusoPopup 안에 승인키 넣기
+	-> var confmKey = "U01TX0FVVEgyMDIyMDYxMzA5NTI0NzExMjY4MDU=";
+7. 스크립트 jusoCallBack()에 폼 이름, 아이디 이름 잘 확인
+

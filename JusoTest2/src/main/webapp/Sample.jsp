@@ -5,16 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript">
+
 function goPopup(){
 	var pop = window.open("./jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	
 }
 
 
 function jusoCallBack(roadFullAddr){
 		document.form.roadFullAddr.value = roadFullAddr;
+		
 }
-</script>
 
+</script>
 <title>주소 입력 샘플</title>
 </head>
 <body>
