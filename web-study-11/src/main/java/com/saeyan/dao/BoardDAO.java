@@ -57,6 +57,35 @@ public class BoardDAO {
 		
 		return list;
 	}
+
+	public void insertBoard(BoardVO vo) {
+		String sql = "insert into board(num, name, email, pass, title, content) "
+				+ "values(board_seq.nextval,?,?,?,?,?)";
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getPass());
+			ps.setString(3, vo.getEmail());
+			ps.setString(4, vo.getTitle());
+			ps.setString(5, vo.getContent());
+			
+			ps.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.closeConnection(conn, ps);
+		}
+		
+		
+	}
 	
 	
 }

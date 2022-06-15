@@ -1,4 +1,4 @@
-package com.saeyan.controller;
+package com.it.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,24 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.saeyan.controller.action.Action;
-import com.saeyan.controller.action.ActionFactory;
-import com.saeyan.controller.action.BoardListAction;
+import com.it.controller.action.Action;
+import com.it.controller.action.EmpActionFactory;
 
-@WebServlet("/BoardServlet")
-public class BoardServlet extends HttpServlet {
+@WebServlet("/EmpServlet")
+public class EmpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public BoardServlet() {
+    public EmpServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String command=request.getParameter("command");
-		System.out.println("BoardServlet에서 요청 받음 확인 : "+ command);
+		String command = request.getParameter("command");
 		
-		ActionFactory af = ActionFactory.getinstance();
-		Action action = af.getAction(command);
+		EmpActionFactory ef = EmpActionFactory.getinstance();
+		Action action = ef.getAction(command);
 		
 		if(action != null) {
 			action.execute(request, response);
@@ -33,7 +31,7 @@ public class BoardServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		doGet(request,response);
+		doGet(request, response);
 	}
 
 }
