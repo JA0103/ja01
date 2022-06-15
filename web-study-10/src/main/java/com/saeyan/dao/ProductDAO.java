@@ -121,5 +121,54 @@ public class ProductDAO {
 		
 		return pVo;
 	}
+
+	public void updateProduct(ProductVO pVo) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "update product set name=?,price=?,pictureurl=?,description=? where code=? ";
+		try {
+			conn = DBManager.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pVo.getName());
+			ps.setInt(2, pVo.getPrice());
+			ps.setString(3, pVo.getPictureurl());
+			ps.setString(4, pVo.getDescription());
+			ps.setInt(5, pVo.getCode());
+			ps.executeUpdate(); 
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				DBManager.closeConnection(conn, ps);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	public void deleteProduct(int code) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "delete product where code = ? ";
+	
+		try {
+			
+			conn = DBManager.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, code);
+			ps.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				DBManager.closeConnection(conn, ps);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 }//class

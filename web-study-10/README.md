@@ -11,7 +11,7 @@ lib->(
 7. jstl.jar
 8. ojdbc6.jar
 9. standard.jar
-10. cos.jar(version:cos-22.05.zip)
+* 10. cos.jar(version:cos-22.05.zip) :파일업로드  -->(jsp&servlet 교재 528-532p)
 11. lombok-1.18.24.jar
 )
 
