@@ -30,7 +30,7 @@
 		<tr class="record">
 			<td>${board.num}</td>
 			<td>
-				<a href="BoardServlet?command=board_view$num=${board.num}">
+				<a href="BoardServlet?command=board_view&num=${board.num}">
 					${board.title}
 				</a>
 			</td>

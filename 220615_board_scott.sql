@@ -20,7 +20,9 @@ values(board_seq.nextval, 'Àü¼öºó', 'raccon@nate.com', '1234', '°íµî¾Ö', 'ÀÏ½ÄÀÔ
 insert into BOARD(num, name, email, pass, title, content)
 values(board_seq.nextval, 'Àü¿øÁö', 'one@nate.com', '1234', '°¹°ñ¸¶À»', 'µÅÁö»ï°ã»ìÀÌ ¸ÀÀÖ½À´Ï´Ù.');
 
-select * from BOARD;
+select * from BOARD order by num;
+
 
 commit;
 
+update board set readcount where num =1;
