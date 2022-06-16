@@ -9,7 +9,7 @@ create table employees(
     primary key(id)
 );
 
-select * from EMPLOYEES;
+select * from EMPLOYEES order by enter desc;
 
 insert into EMPLOYEES(id, pass, name, lev, gender, phone)
 values( 'pinksung', '3333', '¼ºÀ±Á¤', 'A', '2', '010-2222-2222');
