@@ -8,4 +8,21 @@
     select * from Board where id = #{id}
   </select>
 
+	<select id="selectAllMember" resultType="com.ezen.mybatis.BoardVO" >
+		select * from board
+	</select>
+
+	<delete id="deleteBoard">
+		delete from board where id = #{id}
+	</delete>
+	
+	<insert id="insertBoard" parameterType="com.ezen.mybatis.BoardVO">
+		insert into board values(#{id}, #{name}, #{phone}, #{address})
+	</insert>
+	
+	<update id="updateBoard" parameterType="com.ezen.mybatis.BoardVO">
+		update BOARD set NAME=#{name}, PHONE=#{phone}, ADDRESS=#{address}
+		where id=#{id}
+	</update>
+	
 </mapper>

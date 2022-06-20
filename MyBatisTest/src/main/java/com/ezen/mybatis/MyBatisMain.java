@@ -2,6 +2,7 @@ package com.ezen.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -22,19 +23,29 @@ public class MyBatisMain {
 			  System.out.println("session : "+session);
 			  BoardMethod mapper = session.getMapper(BoardMethod.class);
 				
-			  BoardVO vo = mapper.selectOne(1);
-			  System.out.println(vo.getId());
-			  System.out.println(vo.getName());
-			  System.out.println(vo.getPhone());
-			  System.out.println(vo.getAddress());
+//			  BoardVO vo = mapper.selectOne(1);
+			  
+//			  mapper.deleteBoard(5);
+//			  mapper.insertBoard(vo);
+			  
+			  BoardVO vo = new BoardVO();
+			  vo.setId(5);
+			  vo.setName("김진아");
+			  vo.setPhone("010-1111-2222");
+			  vo.setAddress("경기도 수원시");
+			  
+			  mapper.updateBoard(vo);
+			  
+			  session.commit();
+			  
+			  
+			  List<BoardVO> list = mapper.selectAllMember();
+			  for( BoardVO vo2 : list)
+				  System.out.println(vo2.toString());
 			  
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		/*
-		 * 
-		 */
 		
 	}
 
