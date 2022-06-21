@@ -1,24 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- <bean id="tv" class="polymohism.SamsungTV" 
 	init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" scope="prototype"/> -->
 	
 	
-	<bean id="tv" class="polymohism.SamsungTV" lazy-init="true">
+	<!-- <bean id="tv" class="polymohism.SamsungTV" lazy-init="true">
 		<constructor-arg ref="sony"></constructor-arg>
 		<constructor-arg value="2700.35" type="double"></constructor-arg>
+	</bean> -->
+	
+<!-- 	
+	
+	<bean id="tv" class="polymohism.SamsungTV" lazy-init="true"
+		p:speaker-ref="sony" p:price="250">
 	</bean>
+	
 	<bean id="tv2" class="polymohism.LgTV" lazy-init="true">
 		<constructor-arg ref="apple"></constructor-arg>
 		<constructor-arg value="500" type="int"></constructor-arg>
 	</bean>
 	
 	<bean id="sony" class="polymohism.SonySpeaker" lazy-init="true"/>
-	<!-- ref="sony":의존성관계로 이게 있어야 10번이 있을 수 있어서 이게 먼저 생성 된 후 10번 생성됨. -->
+	ref="sony":의존성관계로 이게 있어야 10번이 있을 수 있어서 이게 먼저 생성 된 후 10번 생성됨.
 	<bean id="apple" class="polymohism.AppleSpeaker" lazy-init="true"/>
 	
+	 -->
+	 
+	 
+	 
+	 
+	<bean id="CollectionBean" class="com.springbook.ioc.injection.CollectionBean">
+		<property name="addressList">
+			<list>
+				<value>서울시 강남구 역삼동</value>
+				<value>서울시 성동구 행당동</value>
+			</list>
+		</property>
+		
+		<property name="addressSet">
+			<set value-type="java.lang.String">
+				<value>서울시 강남구 역삼동</value>
+				<value>서울시 성동구 성수동</value>
+				<value>서울시 성동구 성수동</value>
+			</set>
+		</property>
+		
+	<property name="addressMap">
+		<map>
+			<entry>
+				<key><value>고길동</value></key>
+				<value>서울시 강남구 역삼동</value>
+			</entry>
+			<entry key="마이콜" value="서울시 강서구 화곡동"/>
+		</map>
+	</property>
 	
+	<property name="addressPro">
+		<props>
+			<prop key="고길동">서울시 강남구 역삼동</prop>
+			<prop key="마이콜">서울시 강서구 화곡동</prop>
+		</props>
+	</property>
+	
+	
+	
+	
+	
+	
+	
+	
+	</bean>	 
+	 
+
+	 
+	 
+	 
+	 
+	 
+	 
 </beans>

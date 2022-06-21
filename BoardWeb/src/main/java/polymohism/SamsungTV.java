@@ -3,18 +3,27 @@ package polymohism;
 public class SamsungTV implements TV{
 	
 	private Speaker speaker;
-	private double price;
+	private int price;
 	
-	public SamsungTV(Speaker speaker) {
-		System.out.println("samsungTV 객체 생성(1)");
+	public void setSpeaker(Speaker speaker) {
+		System.out.println("setSpeaker 호출");
 		this.speaker = speaker;
 	}
-	public SamsungTV(Speaker speaker,double price) {
-		System.out.println("samsungTV 객체 생성(2)");
-		this.speaker = speaker;
+	public void setPrice(int price) {
+		System.out.println("setPrice 호출");
 		this.price = price;
 	}
-	
+//	
+//	public SamsungTV(Speaker speaker) {
+//		System.out.println("samsungTV 객체 생성(1)");
+//		this.speaker = speaker;
+//	}
+//	public SamsungTV(Speaker speaker,double price) {
+//		System.out.println("samsungTV 객체 생성(2)");
+//		this.speaker = speaker;
+//		this.price = price;
+//	}
+//	
 //	void initMethod() {
 //		System.out.println("initMethod 초기화 메소드");
 //	}
@@ -26,7 +35,7 @@ public class SamsungTV implements TV{
 		System.out.println("samsungTV 객체생성(디폴트) ");
 	}
 	public void powerOn() {
-		System.out.printf("SamsungTV---전원켠다. (가격 : %.2f)\n",price);
+		System.out.printf("SamsungTV---전원켠다. (가격 : %d)\n",price);
 	}
 	public void powerOff() {
 		System.out.println("SamsungTV---전원끈다.");
