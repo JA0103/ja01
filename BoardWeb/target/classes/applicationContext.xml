@@ -3,8 +3,22 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="tv" class="polymohism.SamsungTV"/>
-	<bean id="tv2" class="polymohism.LgTV"/>
+	<!-- <bean id="tv" class="polymohism.SamsungTV" 
+	init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" scope="prototype"/> -->
+	
+	
+	<bean id="tv" class="polymohism.SamsungTV" lazy-init="true">
+		<constructor-arg ref="sony"></constructor-arg>
+		<constructor-arg value="2700.35" type="double"></constructor-arg>
+	</bean>
+	<bean id="tv2" class="polymohism.LgTV" lazy-init="true">
+		<constructor-arg ref="apple"></constructor-arg>
+		<constructor-arg value="500" type="int"></constructor-arg>
+	</bean>
+	
+	<bean id="sony" class="polymohism.SonySpeaker" lazy-init="true"/>
+	<!-- ref="sony":의존성관계로 이게 있어야 10번이 있을 수 있어서 이게 먼저 생성 된 후 10번 생성됨. -->
+	<bean id="apple" class="polymohism.AppleSpeaker" lazy-init="true"/>
 	
 	
 </beans>

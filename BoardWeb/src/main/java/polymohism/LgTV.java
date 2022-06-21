@@ -1,20 +1,28 @@
 package polymohism;
 
 public class LgTV implements TV{
-	public LgTV() {
-		System.out.println("LgTV 생성자");
+	private Speaker speaker;
+	private int price;
+	
+	public LgTV(Speaker speaker, int price) {
+		System.out.println("LgTv 객체 생성(2)");
+		this.speaker = speaker;
+		this.price = price;
 	}
 	
+	public LgTV() {
+		System.out.println("LgTV 생성자(디폴트)");
+	}
 	public void powerOn() {
-		System.out.println("LgTv---전원켠다.");
+		System.out.printf("LgTv---전원켠다. (가격 : %d)\n",price);
 	}
 	public void powerOff() {
 		System.out.println("LgTv---전원끈다.");
 	}
 	public void volumeUp() {
-		System.out.println("LgTv---소리올린다.");
+		speaker.volumeUp();
 	}
 	public void volumeDown() {
-		System.out.println("LgTv---소리내린다.");
+		speaker.volumeDown();
 	}
 }
