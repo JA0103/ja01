@@ -13,7 +13,8 @@ insert into board values(4, '홍길동4', '010-1111-2222', '서울시 강남구');
 insert into board values(5, '홍길동5', '010-1111-2222', '서울시 강남구');
 
 
-
+update BOARD set ID = 5, NAME='김진아', PHONE='010-1234-1234', ADDRESS='서울시 강남구'
+where id=10;
 
 commit;
 
