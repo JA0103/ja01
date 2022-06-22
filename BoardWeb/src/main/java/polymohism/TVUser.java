@@ -11,7 +11,7 @@ public class TVUser {
 		//파일 시스템이나 클래스 경로에 있는 XML설정 파일을 로딩하여 구동하는 컨테이너이다.
 		
 		
-		TV tv = (TV)factory.getBean("tv");
+		TV tv = (TV)factory.getBean("samsung");
 //		TV tv2 = (TV)factory.getBean("tv");	//scope="prototype"을 해주면 따로 쓸 수 있음
 //		TV tv = factory.getBean("tv2", LgTV.class);
 		

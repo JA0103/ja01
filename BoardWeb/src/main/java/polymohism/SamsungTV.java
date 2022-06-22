@@ -1,23 +1,28 @@
 package polymohism;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Component;
+
+@Component("samsung")
 public class SamsungTV implements TV{
-	
+	@Resource(name="apple")
 	private Speaker speaker;
-	private int price;
+//	private int price;
 	
-	public void setSpeaker(Speaker speaker) {
-		System.out.println("setSpeaker 호출");
-		this.speaker = speaker;
-	}
-	public void setPrice(int price) {
-		System.out.println("setPrice 호출");
-		this.price = price;
-	}
-//	
-//	public SamsungTV(Speaker speaker) {
-//		System.out.println("samsungTV 객체 생성(1)");
+//	public void setSpeaker(Speaker speaker) {
+//		System.out.println("setSpeaker 호출");
 //		this.speaker = speaker;
 //	}
+//	public void setPrice(int price) {
+//		System.out.println("setPrice 호출");
+//		this.price = price;
+//	}
+////	
+	public SamsungTV(Speaker speaker) {
+		System.out.println("samsungTV 객체 생성(1)");
+		this.speaker = speaker;
+	}
 //	public SamsungTV(Speaker speaker,double price) {
 //		System.out.println("samsungTV 객체 생성(2)");
 //		this.speaker = speaker;
@@ -35,7 +40,7 @@ public class SamsungTV implements TV{
 		System.out.println("samsungTV 객체생성(디폴트) ");
 	}
 	public void powerOn() {
-		System.out.printf("SamsungTV---전원켠다. (가격 : %d)\n",price);
+		System.out.printf("SamsungTV---전원켠다.");
 	}
 	public void powerOff() {
 		System.out.println("SamsungTV---전원끈다.");
