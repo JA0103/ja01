@@ -23,7 +23,7 @@ public class BoardServiceClient {
 		
 		List<BoardVO> list = boardService.getBoardList(vo);
 		for(BoardVO board : list)
-			System.out.println("=="+ board.toString());
+			System.out.println(board);
 		
 		
 		container.close();
