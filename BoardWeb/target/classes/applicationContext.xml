@@ -88,13 +88,13 @@
 	  -->
 	  
 	  
-	  <bean id="log" class="com.springbook.biz.board.common.LogAdvice"></bean>
+	  <bean id="log" class="com.springbook.biz.board.common.Log4jAdvice"></bean>
 	  
 	  <aop:config>
 	  	<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" 
 	  	id="allPointCut"/>
 	  	<aop:aspect ref="log">
-	  		<aop:before method="printLog" pointcut-ref="allPointCut"/>
+	  		<aop:before method="printLogging" pointcut-ref="allPointCut"/>
 	  	</aop:aspect>
 	  </aop:config>
 	 
