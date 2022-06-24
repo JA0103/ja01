@@ -10,15 +10,16 @@ public class BoardServiceClient {
 	public static void main(String[] args) {
 		//1. Spring 컨테이너를 구동한다.
 		AbstractApplicationContext container = 
-				new GenericXmlApplicationContext("applicationContext2.xml");
+				new GenericXmlApplicationContext("applicationContext.xml");
 
 		//2. Spring 컨테이너로부터 BoardServiceImpl 객체를 Lookup 한다.
 		BoardService boardService = (BoardService)container.getBean("boardService");
 		
 		BoardVO vo = new BoardVO();
-		vo.setTitle("임시제목5");
-		vo.setWriter("홍길동5");
-		vo.setContent("임시 내용5~~~~~~~,,,,");
+		vo.setSeq(100);
+		vo.setTitle("스프링");
+		vo.setWriter("홍길동7");
+		vo.setContent("임시 내용~~~~~~~,,,,");
 		boardService.insertBoard(vo);
 		
 		List<BoardVO> list = boardService.getBoardList(vo);
