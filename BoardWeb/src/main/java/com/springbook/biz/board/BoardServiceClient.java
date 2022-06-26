@@ -20,7 +20,7 @@ public class BoardServiceClient {
 		vo.setTitle("스프링");
 		vo.setWriter("홍길동7");
 		vo.setContent("임시 내용~~~~~~~,,,,");
-		boardService.insertBoard(vo);
+//		boardService.insertBoard(vo);
 		
 		List<BoardVO> list = boardService.getBoardList(vo);
 		for(BoardVO board : list)

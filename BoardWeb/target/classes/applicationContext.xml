@@ -138,7 +138,7 @@
 	 <context:component-scan base-package="com.springbook.biz">
 	 </context:component-scan>
 	
-	<!-- spring JDBC 설정 -->
+	<!-- DataSource 설정 -->
 	<context:property-placeholder location="classpath:config/database.properties"/>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -149,17 +149,18 @@
 		
 	</bean>
 	 
-		<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-			<property name="dataSource" ref="dataSource"></property>
-		</bean>
+	<!-- spring JDBC 설정 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 	 
 	 
 	 <!-- 트랜잭션 -->
-	 <bean id="txtManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	 <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	 	<property name="dataSource" ref="dataSource"></property>
 	 </bean>
 	 
-	 <tx:advice id="txAdvice" transaction-manager="txtManager">
+	 <tx:advice id="txAdvice" transaction-manager="txManager">
 	 	<tx:attributes>
 			<tx:method name="get*" read-only="true"/>
 			<tx:method name="*"/>	 	
