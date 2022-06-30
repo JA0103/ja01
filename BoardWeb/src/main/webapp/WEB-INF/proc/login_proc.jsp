@@ -23,6 +23,10 @@
 	
 	//3.화면 네비게이션
 	if(user != null){
+		session = request.getSession();
+		session.setAttribute("id",id);
+		session.setAttribute("password",password);
+		
 		
 		response.sendRedirect("getBoardList.jsp");
 	}else{
