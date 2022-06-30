@@ -16,7 +16,18 @@ import com.springbook.biz.user.impl.UserDAO;
 
 public class DispatcherServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
-    
+   private HandlerMapping handlerMapping;
+   private ViewResolver viewResolver;
+   
+   public void init() {
+	  System.out.println("init-----------------------------");
+	   handlerMapping = new HandlerMapping();
+	   viewResolver = new ViewResolver();
+	   viewResolver.setPrefix("./");
+	   viewResolver.setSuffix(".jsp");
+   }
+   
+   
    public DispatcherServlet() {
         super();
     }
@@ -37,7 +48,24 @@ public class DispatcherServlet extends HttpServlet {
       String path = uri.substring(uri.lastIndexOf("/"));
       System.out.println(path);
       
-      //2.클라이언트의 요청 path에 따라 적절히 분기처리한다.
+      
+      Controller ctrl = handlerMapping.getController(path);
+      
+      String viewName = ctrl.handleRequest(request, response);
+      
+      String view = null;
+      if(!viewName.contains(".do")) {
+    	  view = viewResolver.getView(viewName);
+      }else {
+    	  view = viewName;
+      }
+      
+      response.sendRedirect(view);
+      
+   }
+}//class
+
+/* //2.클라이언트의 요청 path에 따라 적절히 분기처리한다.
       
       //로그인
       if(path.equals("/login.do")) {
@@ -149,6 +177,4 @@ public class DispatcherServlet extends HttpServlet {
          HttpSession session = request.getSession();
          session.setAttribute("boardList", boardList);
          response.sendRedirect("getBoardList.jsp");
-      }
-   }
-}
+      }*/
