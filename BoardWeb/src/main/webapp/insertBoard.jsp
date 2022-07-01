@@ -38,7 +38,7 @@
 		</table>
 	</form>
 	<hr>
-	<a href="getBoardList.jsp">글 목록</a>
+	<a href="getBoardList.do">글 목록</a>
 	
 </center>	
 

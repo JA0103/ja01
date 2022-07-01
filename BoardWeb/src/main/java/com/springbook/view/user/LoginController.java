@@ -3,14 +3,16 @@ package com.springbook.view.user;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.impl.UserDAO;
-import com.springbook.view.controller.Controller;
 
 public class LoginController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		 //1.클라이언트의 요청 path 정보를 추출한다.
 	      String uri = request.getRequestURI();
@@ -32,12 +34,14 @@ public class LoginController implements Controller {
 	     	UserVO user = userDAO.getUser(vo);
 	     	
 	     	//3.화면 네비게이션
-	     	if(user != null){
-	     		return "getBoardList.do";
-	     	}else{
-	     		return "login";
+	     	ModelAndView mav = new ModelAndView();
+	     	if(user != null) {
+	     		mav.setViewName("getBoardList.do");
+	     	}else {
+	     		mav.setViewName("login.jsp");
 	     	}
-		
+	     	
+	     	return mav;
 	}
 	
 }
