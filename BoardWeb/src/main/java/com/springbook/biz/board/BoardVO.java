@@ -1,6 +1,7 @@
 package com.springbook.biz.board;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import lombok.Data;
 

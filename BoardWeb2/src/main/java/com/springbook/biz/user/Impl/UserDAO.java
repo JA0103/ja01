@@ -1,4 +1,4 @@
-package com.springbook.biz.user.Impl;
+package com.springbook.biz.user.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import com.springbook.biz.common.JDBCUtil;
 import com.springbook.biz.user.UserVO;
 
 @Repository("userDAO")
-public class UserDAO{
+public class UserDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
@@ -52,4 +52,3 @@ public class UserDAO{
 	
 	
 }
-

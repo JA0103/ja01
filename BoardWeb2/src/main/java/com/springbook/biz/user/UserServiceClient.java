@@ -6,19 +6,15 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class UserServiceClient {
 
 	public static void main(String[] args) {
-		
 		AbstractApplicationContext container = 
-				new GenericXmlApplicationContext("applicationContext.xml");
+				new GenericXmlApplicationContext("applicationContext2.xml");
 		
-		UserService userService = (UserService)container.getBean("userService");
-		
-		
+		UserService userService = (UserService) container.getBean("userService");
 		UserVO vo = new UserVO();
 		vo.setId("test");
 		vo.setPassword("test123");
 		
-		UserVO user = userService.getUser(vo);
-		
+		UserVO user  = userService.getUser(vo);
 		if(user != null) {
 			System.out.println(user.getName()+"님 환영합니다.");
 		}else {
@@ -26,9 +22,6 @@ public class UserServiceClient {
 		}
 		
 		container.close();
-		
-		
-		
 	}
 
 }

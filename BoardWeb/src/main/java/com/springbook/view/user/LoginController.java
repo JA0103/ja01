@@ -3,45 +3,26 @@ package com.springbook.view.user;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
+import com.springbook.biz.board.BoardVO;
+import com.springbook.biz.board.impl.BoardDAO;
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.impl.UserDAO;
 
-public class LoginController implements Controller {
+@Controller
+public class LoginController{
 
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("/login.do")
+	public String handleRequest(UserVO vo, UserDAO userDAO) {
 		
-		 //1.클라이언트의 요청 path 정보를 추출한다.
-	      String uri = request.getRequestURI();
-	      String path = uri.substring(uri.lastIndexOf("/"));
-	      System.out.println(path);
-	      
-	      //2.클라이언트의 요청 path에 따라 적절히 분기처리한다.
-	      
-	         System.out.println("로그인처리");
-	         
-	         String id = request.getParameter("id");
-	         String password = request.getParameter("password");
-	         
-	         UserVO vo = new UserVO();
-	         vo.setId(id);
-	         vo.setPassword(password);
-	         
-	         UserDAO userDAO = new UserDAO();
-	     	UserVO user = userDAO.getUser(vo);
+	     	if(userDAO.getUser(vo) != null) 
+	     		return "getBoardList.do";
+	     	else 
+	     		return "login.jsp";
 	     	
-	     	//3.화면 네비게이션
-	     	ModelAndView mav = new ModelAndView();
-	     	if(user != null) {
-	     		mav.setViewName("getBoardList.do");
-	     	}else {
-	     		mav.setViewName("login.jsp");
-	     	}
-	     	
-	     	return mav;
 	}
 	
 }
