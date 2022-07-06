@@ -31,6 +31,11 @@ public class BoardDAO{
 	 * NVL("값","지정값")값이 null 인 경우, 지정 값을 출력하고
 	 * 그렇지 않으면 원래값을 그대로 출력한다.
 	 */
+	private final String BOARD_LIST_T = "select * from board where title like "
+			+ "'%'||?||'%' order by seq desc ";
+	private final String BOARD_LIST_C = "select * from board where content like "
+			+ "'%'||?||'%' order by seq desc ";
+				
 	 
 	
 	//글 등록
@@ -128,7 +133,13 @@ public class BoardDAO{
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_LIST);
+			//글 목록 검색 
+			if(vo.getSearchCondition().equals("TITLE")) {
+				stmt = conn.prepareStatement(BOARD_LIST_T); 
+			}else if(vo.getSearchCondition().equals("CONTENT")) {
+				stmt = conn.prepareStatement(BOARD_LIST_C); 
+			}
+			stmt.setString(1, vo.getSearchKeyword());
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
