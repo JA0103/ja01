@@ -14,6 +14,12 @@
 <head>
 <meta charset="UTF-8">
 <title>글 목록</title>
+<!-- Link -->
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/basic.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/owl-carousel.css">
 </head>
 <body>
 <center>
