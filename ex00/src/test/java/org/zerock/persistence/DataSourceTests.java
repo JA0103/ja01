@@ -18,30 +18,34 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class DataSourceTests {
-	
-	@Autowired
-	private DataSource dataSource;
-	
-	@Autowired
-	private SqlSessionFactory sqlSessionFactory;
-	
-	@Test
-	public void testConnection() {
-		try(Connection con = dataSource.getConnection()){
-			log.info(con);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	@Test
-	public void testMybatis() {
-		try(SqlSession session = sqlSessionFactory.openSession();
-				Connection con = session.getConnection()){
-			log.info("--------------------");
-			log.info(con);
-			log.info(session);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+   
+   @Autowired
+   private DataSource dataSource;
+   
+   @Autowired
+   private SqlSessionFactory sqlSessionFactory;
+   
+   @Test
+   public void testConnection() {
+      try(Connection con = dataSource.getConnection()) {
+         log.info("hikari dbcp------------------------");
+         log.info(con);
+      }catch(Exception e) {
+         e.printStackTrace();
+      }
+   }
+
+   @Test
+   public void testMybatis() {
+	   try(SqlSession session = sqlSessionFactory.openSession();
+			   Connection con = session.getConnection();
+			   ) {
+		   log.info("hikari dbcp------------------------");
+		   log.info(con);
+		   log.info(session);
+	   }catch(Exception e) {
+		   e.printStackTrace();
+	   }
+   }
+
 }//
