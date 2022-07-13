@@ -24,15 +24,18 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void modify(BoardVO vo) {
+	public int modify(BoardVO vo) {
 		log.info("register-------------------");
-		mapper.update(vo);
+		
+		return mapper.update(vo);
+		
 	}
 
 	@Override
-	public void remove(Long bno) {
+	public int remove(Long bno) {
 		log.info("register-------------------");
-		mapper.delete(bno);		
+			
+		return mapper.delete(bno);
 	}
 
 	@Override
