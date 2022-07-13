@@ -23,42 +23,44 @@ public class BoardMapperTests {
 //		mapper.getList().forEach(board->log.info(board));
 		for(BoardVO vo : mapper.getList()) {
 			log.info(vo);
-		}
+		} //--하나씩 찍어주려고 밑에는 덩어리째 가져오는?
+		
+//		mapper.getList();
 	}
 	
 	@Test
 	public void testinsert() {
 		BoardVO vo = new BoardVO();
-		vo.setTitle("Sujung의 정석");
-		vo.setContent("So Bad");
-		vo.setWriter("리수정");
+		vo.setTitle("자바의 정석");
+		vo.setContent("자바");
+		vo.setWriter("이수정");
 		mapper.insert(vo);
 	}
 	
 	@Test
 	public void testSelectKey() {
 		BoardVO vo = new BoardVO();
-		vo.setTitle("냠");
-		vo.setContent("So Good");
+		vo.setTitle("제목");
+		vo.setContent("내용");
 		vo.setWriter("지나");
 		mapper.insertSelectKey(vo);
 	}
 	
 	@Test
 	public void testRead() {
-		BoardVO vo = mapper.read(16L);
+		BoardVO vo = mapper.read(1L);
 	}
 
     @Test
     public void testdelete() {
 //	 mapper.delete(9L);
-     log.info("delete count : "+mapper.delete(9L));
+     log.info("delete count : "+mapper.delete(8L));
     }
 	
     @Test
     public void testupdate() {
     	BoardVO vo = new BoardVO();
-    	vo.setBno(14L);
+    	vo.setBno(7L);
     	vo.setTitle("오라클제목");
     	vo.setContent("오라클내용");
     	vo.setWriter("오라클");
