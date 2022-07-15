@@ -20,10 +20,17 @@ public class BoardController {
 	
 	private BoardService service;
 	
+
+	
 	@GetMapping("/list")
 	public void list( Model model) {
 		log.info("list------------------------------");
 		model.addAttribute("list", service.getList());
+	}
+	
+	@GetMapping("/register")
+	public void register() {
+		
 	}
 	
 	@PostMapping("/register")
