@@ -27,6 +27,7 @@
                                     <tr>
                                         <th>#번호</th>
                                         <th>제목</th>
+                                        <th>내용</th>
                                         <th>작성자</th>
                                         <th>작성일</th>
                                         <th>변경일</th>
@@ -35,7 +36,10 @@
                                 <c:forEach items="${list}" var="board">
                                     <tr class="odd gradeX">
                                         <td><c:out value="${board.bno}"/></td>
-                                        <td><c:out value="${board.title}"/> </td>
+                                        <td>
+                                        	<a href="/board/get?bno=<c:out value="${board.bno}"/>">
+                                        	<c:out value="${board.title}"/></a>
+                                        </td>
                                         <td><c:out value="${board.content}"/></td>
                                         <td><c:out value="${board.writer}"/></td>
                                         <td><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/> </td>
@@ -44,6 +48,31 @@
                                 </c:forEach>
                             </table>
                             <!-- /.table-responsive -->
+                           
+                            <!-- Modal 창 추가 -->
+                            <div id="myModal" class="modal" tabindex="-1" role="dialog">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title">Modal title</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							        처리가 완료되었습니다.
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-primary">Save changes</button>
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+                             <!-- /Modal 창 추가 -->
+                            
+                            
+                            
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -52,9 +81,38 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <!-- /.row -->
-            <!-- /.row -->
-            <!-- /.row -->
+            
+<script>
+   // 새로고침해서 등록이 계속 되는것을 방지
+   $(document).ready(function() {
+
+      var result = '<c:out value="${result}"/>';
+      console.log("result" + result);
+      
+      checkModal(result);
+      
+      //뒤로가기 모달창 문제 해결
+      history.replaceState({},null,null);
+      
+      function checkModal(result){
+         if(result === '' || history.state){
+            return ;
+         }
+         
+         if(parseInt(result) > 0){
+            $(".modal-body").html("게시글" + parseInt(result) + "번이 등록됐습니다.");
+         }
+         
+         $("#myModal").modal("show");
+      }
+      
+      $("#regBtn").on("click", function(){
+         self.location = "/board/register";
+      });
+   });
+</script>
+
+            
  <%@include file="../includes/footer.jsp" %>
 
 
