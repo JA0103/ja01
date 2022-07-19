@@ -19,6 +19,15 @@ public class PageDTO {
 		this.total = total;
 							//ceil : 올림
 		this.endPage =(int)(Math.ceil(cri.getPageNum()/10.0)) * 10;
-		this.startPage = (int)((Math.ceil(cri.getPageNum()/10.0)) * 10)-9;
+		this.startPage = endPage-9;
+							//		소수점 붙여주기위해 *1.0
+		int readEnd =(int)(Math.ceil(total*1.0)/cri.getAmount());
+
+		if(endPage>readEnd) {
+			endPage = readEnd;
+		}
+		
+		this.prev = this.startPage > 1;
+		this.next = this.endPage < readEnd;
 	}
 }//
