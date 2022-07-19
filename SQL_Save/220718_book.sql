@@ -4,7 +4,7 @@ insert into TBL_BOARD(bno, title, content, writer)
     commit;
     
 select * from TBL_BOARD order by bno +1 desc;    
-
+select * from TBL_BOARD;
 
 --Ω««‡∞Ë»π. ¿Œµ¶Ω∫
 select /* + index_desc(tbl_board pk_board)  */ 
