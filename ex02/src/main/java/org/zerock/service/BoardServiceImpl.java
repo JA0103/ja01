@@ -46,6 +46,11 @@ public class BoardServiceImpl implements BoardService {
 	public int remove(Long bno) {
 		return mapper.delete(bno);
 	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotalCount(cri);
+	}
    
       
 }
