@@ -15,7 +15,7 @@ public class Criteria {
 	private String type;
 	private String keyword;
 	
-	public String[] getTpeArr() {
+	public String[] getTypeArr() {
 		return type == null ? new String[] {} : type.split(""); 
 	}
 	

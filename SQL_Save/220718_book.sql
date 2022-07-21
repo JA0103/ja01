@@ -20,7 +20,13 @@ select * from (
 where rn > 10;
 
 --°Ë»ö
-select * from TBL_BOARD;
+select * from (
+    select /*+ index_desc(tbl_board pk_board) */
+    rownum rn, title, content, writer, regdate, updatedate
+    from TBL_BOARD
+    where title like '%µ·°¡½º%' and rownum <= 20
+    )
+where rn >10;    
 
 
 

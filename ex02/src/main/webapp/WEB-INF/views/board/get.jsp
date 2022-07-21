@@ -44,10 +44,14 @@
                         		<!-- 그 전에 있었던 페이지로 넘어가기 위해 페이지값 넘겨주기 -->
                         		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
                         		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+                        		<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
+                        		<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
                         	</form>
                         	
                         	pageNum : ${cri.pageNum}
                         	amount : ${cri.amount}
+                        	type : ${cri.type}
+                        	keyword : ${cri.keyword}
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->

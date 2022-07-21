@@ -86,12 +86,13 @@ public class BoardMapperTests {
 		log.info(pageDTO);
 	}
 	
+	
 	@Test
 	public void testSearchTest() {
 		Map<String, String> map = new HashMap<>();
 		map.put("T", "오늘은");
 		map.put("C", "content");
-//		map.put("W", "김진아");
+		map.put("W", "김진아");
 		
 		Map<String, Map<String, String>> outer = new HashMap<>();
 		
@@ -99,5 +100,29 @@ public class BoardMapperTests {
 		List<BoardVO> list = mapper.searchTest(outer);
 		log.info(list);
 	}
+	
+	
+	@Test
+	public void testSearchPaging() {
+		Criteria cri = new Criteria();
+		cri.setType("T");
+		cri.setKeyword("돈가");
+		
+		List<BoardVO> list = mapper.getListWithPagging(cri);
+		log.info(list);
+	}
+	
+	@Test
+	public void testTotal() {
+		Criteria cri = new Criteria();
+		cri.setType("T");
+		cri.setKeyword("돈가");
+		
+		int count = mapper.getTotalCount(cri);
+		
+		log.info("--------------------------------------------------");
+		log.info("count : "+count);
+	}
+	
 	
 }//
