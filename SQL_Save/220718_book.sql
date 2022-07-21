@@ -24,9 +24,13 @@ select * from (
     select /*+ index_desc(tbl_board pk_board) */
     rownum rn, title, content, writer, regdate, updatedate
     from TBL_BOARD
-    where title like '%絲陛蝶%' and rownum <= 20
+    where (title like '%絲陛蝶%' or content like '%熱機%') and rownum <= 20
     )
-where rn >10;    
+where rn >10;  
+
+select * from TBL_BOARD where title like '%熱錳%' or content like '%熱機%';
+
+
 
 
 
