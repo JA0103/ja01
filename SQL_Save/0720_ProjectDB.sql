@@ -1,11 +1,12 @@
+--
+--drop table marketboard;
+--drop table marketuser;
+--drop table mypage;
+--drop table buyboard;
+--drop table sellboard;
+--drop table heartboard;
+--drop table center;
 
-drop table marketboard;
-drop table marketuser;
-drop table mypage;
-drop table buyboard;
-drop table sellboard;
-drop table heartboard;
-drop table center;
 
 --유저테이블
 create table marketuser(
@@ -19,7 +20,6 @@ create table marketuser(
     us_gender varchar2(8), --남성(male), 여성(female)
     us_address1 varchar2(100) not null, -- 우편번호
 	us_address2 varchar2(100) not null, -- 기본주소
-	us_address3 varchar2(100) not null, -- 상세주소
     us_phone char(13) not null,
     us_joindate date default sysdate,
     us_grade number(1) default 1 -- 관리자(0), 일반회원(1)
@@ -117,3 +117,5 @@ create table center(
     constraint fk_center_id foreign key (ce_id) references marketuser (us_id)
     on delete cascade
 );
+
+commit;
