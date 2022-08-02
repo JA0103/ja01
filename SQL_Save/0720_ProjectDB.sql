@@ -83,6 +83,8 @@ create table buyboard(
     on delete cascade
 );
 
+
+
 --판매내역
 create table sellboard(
     sel_num number primary key,
@@ -94,6 +96,8 @@ create table sellboard(
     constraint fk_sell_id foreign key (sel_nickname) references mypage (my_nickname)
     on delete cascade
 );
+
+insert into sellboard ();
 
 --찜목록
 create table heartboard(

@@ -24,8 +24,8 @@ create table marketuser(
     us_grade number(1) default 1 -- 관리자(0), 일반회원(1)
 );
 
-
-
+select * from marketuser;
+select * from mypage;
 --상품 테이블
 create table marketboard(
     bo_num number primary key,
