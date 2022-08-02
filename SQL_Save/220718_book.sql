@@ -1,3 +1,4 @@
+
 insert into TBL_BOARD(bno, title, content, writer)
     (select SEQ_BOARD.NEXTVAL, title, content, writer from TBL_BOARD);
     
@@ -48,3 +49,64 @@ from (
         where rownum <=20
 )
 where rs > 10;
+
+
+
+create table tbl_reply(
+    rno number(10,0),
+    bno number(10,0) not null,
+    reply varchar2 (1000) not null,
+    replyer varchar2(50) not null,
+    replyDate date default sysdate,
+    updateDate date default sysdate
+);
+
+create sequence seq_reply;
+
+alter table tbl_reply add constraint pk_reply primary key(rno);
+
+alter table tbl_reply add constraint fk_reply_board
+foreign key (bno) references tbl_board(bno);
+
+desc tbl_reply;
+
+select * from tbl_board;
+select * from tbl_reply;
+select * from tbl_reply where rno = 329 ;
+commit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

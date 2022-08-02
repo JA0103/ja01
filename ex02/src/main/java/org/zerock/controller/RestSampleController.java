@@ -110,6 +110,10 @@ public class RestSampleController {
 	@PostMapping("/ticket")
 	public Ticket convert(@RequestBody Ticket ticket) {
 		log.info("convert : " + ticket);
+		ticket.setTno(200);
+		ticket.setOwner("홍길동");
+		ticket.setGrade("cCC");
+		
 		return ticket;
 	}
 }
