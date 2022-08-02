@@ -11,29 +11,25 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.domain.BoardVO;
-import org.zerock.persistence.DataSourceTests;
 
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
-	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
 @WebAppConfiguration
 @Log4j
 public class BoardControllerTests {
-	
 	@Autowired
 	private WebApplicationContext ctx;
-	
+
 	private MockMvc mockMvc;
-	
+
 	@Before
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
-	
+
 	@Test
 	public void testList() throws Exception {
 		log.info(
@@ -43,75 +39,63 @@ public class BoardControllerTests {
 				.getModelMap()
 				);
 	}
-	
+
 	@Test
 	public void testRegister() throws Exception {
-		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
-						.param("title", "자두스무디")
-						.param("content", "맛있다")
-						.param("writer", "3900원")
-						)
+		log.info(mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
+				.param("title", "금요일")
+				.param("content", "집가고싶다")
+				.param("writer", "피곤"))
 				.andReturn()
 				.getModelAndView()
-				.getViewName()
+				.getModelMap()
 				);
 	}
-	
+
 	@Test
 	public void testGet() throws Exception {
-		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.get("/board/get")
-						.param("bno", "15")
-						)
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/get")
+				.param("bno", "1"))
 				.andReturn()
 				.getModelAndView()
 				.getModelMap()
 				);
 	}
-	
+
 	@Test
 	public void testRemove() throws Exception {
-		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.post("/board/remove")
-						.param("bno", "15")
-						)
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/board/remove")
+				.param("bno", "22"))
 				.andReturn()
 				.getModelAndView()
-				.getViewName()
-				);
+				.getViewName();
+		log.info(resultPage);
+	}
+
+	@Test
+	public void testModify() throws Exception {
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/board/modify")
+				.param("bno", "21")
+				.param("title", "금요일")
+				.param("content", "내일은")
+				.param("writer", "주말"))
+				.andReturn()
+				.getModelAndView()
+				.getViewName();
+		log.info(resultPage);
 	}
 	
 	@Test
-	public void testUpdate() throws Exception {
+	public void testListPaging() throws Exception{
 		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.post("/board/update")
-						.param("bno", "14")
-						.param("title", "오늘은")
-						.param("content", "금요일")
-						.param("writer", "신난당")
-						)
-				.andReturn()
-				.getModelAndView()
-				.getViewName()
-				);
+			mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
+			.param("pageNum", "5")
+			.param("amount", "30"))
+			.andReturn()
+			.getModelAndView()
+			.getModelMap()
+			);
+		
 	}
-	
-	@Test
-	public void testListPaging() throws Exception {
-		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
-						.param("pageNum", "5")
-						.param("amount", "30")
-						)
-				.andReturn()
-				.getModelAndView()
-				.getModelMap()
-				);
-	}
-	
-	
-	
-	
-	
-}//
+
+}

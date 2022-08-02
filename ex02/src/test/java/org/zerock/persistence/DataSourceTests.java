@@ -12,29 +12,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import lombok.extern.log4j.Log4j;
 
-
 //pom.xml--> junit (<version>4.12<version>), log4j (<version>1.2.17<version>)
-//springframework -> <artifactId>spring-test</artifactId> 추가
+//springframework -> test 추가
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class DataSourceTests {
-	
 	@Autowired
 	private DataSource dataSource;
-	
+
 	@Test
 	public void testConnection() {
-			try(Connection con = dataSource.getConnection()) {
-				log.info("dataSource" + dataSource);
-				
-				log.info(con);
-	}catch(Exception e) {
-		e.printStackTrace();
+		try (Connection con = dataSource.getConnection()) {
+			log.info("dataSource : " + dataSource);
+			log.info(con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	}
-	
-	
-
-	
-}//
+}

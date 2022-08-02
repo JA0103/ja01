@@ -19,40 +19,35 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                        	<div class="form-group">
-                        		<label>Bno</label>
-                        		<input name="bno" readonly="readonly" class="form-control" value='<c:out value="${board.bno}"/>'>
-                        	</div>
-                        	<div class="form-group">
-                        		<label>Title</label>
-                        		<input name="title" readonly="readonly" class="form-control" value='<c:out value="${board.title}"/>'>
-                        	</div>
-                        	<div class="form-group">
-                        		<label>Text area</label>
-                        		<textarea class="form-control" rows="3" name="content" readonly="readonly"><c:out value="${board.content}"/></textarea>
-                        	</div>
-                        	<div class="form-group">
-                        		<label>Writer</label>
-                        		<input name="writer" readonly="readonly" class="form-control" value='<c:out value="${board.writer}"/>'>
-                        	</div>
-                        	
-                        	<button data-oper='modify' class="btn btn-default">Modify</button>
-                        	<button data-oper='list' class="btn btn-info">List</button>
-                        	
-                        	<form id='operForm' action = "/board/modify" method="get">
-                        		<input type="hidden" id="bno" name="bno" value='<c:out value="${board.bno}"></c:out>'>
-                        		<!-- 그 전에 있었던 페이지로 넘어가기 위해 페이지값 넘겨주기 -->
-                        		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
-                        		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-                        		<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
-                        		<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
-                        	</form>
-                        	
-                        	pageNum : ${cri.pageNum}
-                        	amount : ${cri.amount}
-                        	type : ${cri.type}
-                        	keyword : ${cri.keyword}
-                            <!-- /.table-responsive -->
+                           <div class="form-group">
+                              <label>Bno</label>
+                              <input name="bno" readonly="readonly" class="form-control" value='<c:out value="${board.bno}"/>'>
+                           </div>
+                           <div class="form-group">
+                              <label>Title</label>
+                              <input name="title" readonly="readonly" class="form-control" value='<c:out value="${board.title}"/>'>
+                           </div>
+                           <div class="form-group">
+                              <label>Text area</label>
+                              <textarea class="form-control" rows="3" name="content" readonly="readonly"><c:out value="${board.content}"/></textarea>
+                           </div>
+                           <div class="form-group">
+                              <label>Writer</label>
+                              <input name="writer" readonly="readonly" class="form-control" value='<c:out value="${board.writer}"/>'>
+                           </div>
+                           
+                           <button data-oper='modify' class="btn btn-default">Modify</button>
+                           <button data-oper='list' class="btn btn-info">List</button>
+                           
+                           <form id='operForm' action = "/board/modify" method="get">
+                              <input type="hidden" id="bno" name="bno" value='<c:out value="${board.bno}"/>'>
+                              <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+                              <input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+                              <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
+                              <input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
+                           </form>
+                           
+                           <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -64,20 +59,19 @@
             
 <script>
 
-	var operForm = $("#operForm");
-	
-	$("button[data-oper='modify']").on("click", function(){
-		operForm.attr("action","/board/modify").submit();
-	});
+   var operForm = $("#operForm");
+   
+   $("button[data-oper='modify']").on("click", function(){
+      operForm.attr("action","/board/modify").submit();
+   });
 
-	$("button[data-oper='list']").on("click", function(){
-		operForm.find("#bno").remove();
-		operForm.attr("action","/board/list").submit();
-	});
+   $("button[data-oper='list']").on("click", function(){
+      operForm.find("#bno").remove();
+      operForm.attr("action","/board/list").submit();
+   });
 
 </script>            
             
             
  <%@include file="../includes/footer.jsp" %>
-
 

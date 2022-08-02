@@ -20,17 +20,16 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/board/*")
 @AllArgsConstructor
 public class BoardController {
-	
-	//AllArgsConstructor가 있어서 Autowired어노테이션 안줘도 됨.
+
 	private BoardService service;
 	
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
-		log.info("cri" + cri);
+		log.info("cri : " + cri);
 		int total = service.getTotal(cri);
 		log.info("total count : " + total);
 		model.addAttribute("list", service.getList(cri));
-		model.addAttribute("pageMaker",new PageDTO(cri, total));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@GetMapping("/register")
@@ -47,28 +46,15 @@ public class BoardController {
 	}
 	
 	@GetMapping({"/get", "/modify"})
-	public void get(Long bno, @ModelAttribute("cri")Criteria cri, Model model) {
-		log.info("get,modify----------------------------------");
+	public void get(Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+		log.info("get or modify--------------------");
 		model.addAttribute("board", service.get(bno));
 	}
 	
 	@PostMapping("/remove")
-	public String remove(Long bno, @ModelAttribute("cri")Criteria cri, RedirectAttributes rttr) {
-		log.info("delete--------------------------------");
-		if(service.remove(bno)==1) {
-			rttr.addFlashAttribute("result","success");
-		}
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword", cri.getKeyword());
-		return "redirect:/board/list";
-	}
-	
-	@PostMapping("/modify")
-	public String modify(BoardVO vo, @ModelAttribute("cri")Criteria cri, RedirectAttributes rttr) {
-		log.info("modify:" + vo);
-		if(service.modify(vo)==1) {
+	public String remove(Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		log.info("delete-----------"+bno);
+		if(service.remove(bno) == 1) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
@@ -78,4 +64,16 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-}//
+	@PostMapping("/modify")
+	public String modify(BoardVO vo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		log.info("modify : " + vo);
+		if(service.modify(vo) == 1) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		return "redirect:/board/list";
+	}
+}
