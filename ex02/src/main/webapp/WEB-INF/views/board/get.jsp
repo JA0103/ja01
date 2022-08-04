@@ -56,7 +56,75 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            
+<script type="text/javascript" src="/resources/js/reply.js"></script> 
+
+<script>
+		var bnoValue='<c:out value="${board.bno}"/>';
+		
+		replyService.get(13, function(data) {
+			          alert(data);
+			          console.log(data);
+			       });
+		
+/* 		
+		replyService.get(
+				{rno : 13},
+				function(data){
+						console.log(data);
+				}
+			);
+		 */
+		
+		
+	/* 	
+	 	replyService.update(
+			{rno:13, reply:'Modeified Reply....'},	
+			function(result){
+				alert("수정 완료");
+			}
+		);
+		 */
+		
+		/* 
+		replyService.remove(12, function(result){
+			console.log(result);
+				if(result === "success"){
+					alert("Removed");
+				}
+			},
+			function(error){
+				alert("Error");
+			}
+			);
+		
+		 */
+		
+		
+/* 		
+		replyService.getList(
+			{bno : bnoValue, page : 1},
+			function(list){
+				for(var i=0, len = list.length || 0; i<len; i++){
+					console.log(list[i]);
+				}
+				
+			}
+		);
+		 */
+/* 		
+		replyService.add(
+			{reply : "JS TEST", replyer : "tester", bno : bnoValue},
+			function(result){
+				alert("RESULT : " + result);
+			}
+		);
+		 */
+		 
+	$(document).ready(function(){
+		console.log("JS TEST");
+	});
+</script>
+  
 <script>
 
    var operForm = $("#operForm");

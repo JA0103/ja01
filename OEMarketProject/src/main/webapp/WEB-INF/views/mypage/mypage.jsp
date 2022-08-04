@@ -23,7 +23,6 @@
    <div class="container">
       <form name="fileForm" action="/mypage/profileEdit" method="post" enctype="multipart/form-data">
          <input type="hidden" name="my_id" value='<c:out value="${mypage.my_id }"/>'>
-         <input type="hidden" name="my_image" value='<c:out value="${mypage.my_image }"/>'>
          <table class="baseTable">
             <tr>
                <th colspan="3" align="left"><h2>프로필 설정</h2><br></th>

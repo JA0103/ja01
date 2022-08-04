@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oe.mapper.ChatRoomMapper">
+	<insert id="insert">
+		insert into chatRoom values((select nvl(max(cr_roomNumber), 0)+1 from chatRoom),#{us_nickname})
+	</insert>
+
+	<select id="Chk_Room" resultType="string">
+		select cr_roomName from chatRoom where cr_roomName = #{us_nickname}
+	</select>
+
+</mapper>

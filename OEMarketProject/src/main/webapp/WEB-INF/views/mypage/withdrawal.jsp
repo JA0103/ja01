@@ -25,7 +25,7 @@
                      <input type="hidden" name="pass_chk" value="<c:out value="${user.us_pass }" />">
                      <input type="hidden" name="my_id" value="<c:out value="${mypage.my_id}" />">
                      <div class="form-group">
-                        <c:out value="${mypage.my_nickname}" />님,<br>그동안 오이마켓과 함께해주셔서 감사했습니다.
+                        <c:out value="${mypage.my_nickname}" />님,<br>떠나신다니 정말 아쉽습니다.
                      </div>
                      <div class="form-group">
                         <input type="password" class="form-control" name="pass" placeholder="비밀번호 확인">
@@ -78,8 +78,12 @@
          form.wd_reason_pre.focus();
          return false;
       }else{
-         alert("회원 탈퇴가 완료되었습니다. 지금까지 오이마켓과 함께해주셔서 감사합니다.");
-         return true;
+         if (!confirm("정말 탈퇴하시겠습니까?")) {
+            return false;
+         } else {
+            alert("회원 탈퇴가 완료되었습니다. 지금까지 오이마켓과 함께해주셔서 감사합니다.");
+            return true;
+         }
       }
    }
 </script>

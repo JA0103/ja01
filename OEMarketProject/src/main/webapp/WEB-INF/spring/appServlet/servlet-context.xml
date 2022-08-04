@@ -29,11 +29,35 @@
         <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
     </beans:bean>
 	
-	<context:component-scan base-package="com.oe.controller" />
+	<context:component-scan base-package="com.oe" />
 	
 	<!-- C:폴더의 그림 파일 업로드  -->
 	<resources mapping="/resources/**" location="/resources/" />
-    <resources mapping="/img/**" location="C:\\oe_Upload\\" />
+    <resources mapping="/img/**" location="C:\\oe_upload\\" />
+	
+	
+<!-- 회원가입 메일 인증 -->
+	<beans:bean id="mailSender"	class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.gmail.com" />
+		<beans:property name="port" value="587" /><!-- 465 or 25 -->
+		<beans:property name="username" value="jinaa0103@gmail.com" />
+		<beans:property name="password" value="towiugynvbnjmdlg" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+		<beans:property name="javaMailProperties">
+			<beans:props>
+				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
+				<beans:prop key="mail.smtp.auth">true</beans:prop>
+				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+				<beans:prop key="mail.debug">true</beans:prop>
+				
+				<beans:prop key="mail.smtp.ssl.trust">smtp.gmail.com</beans:prop>
+				<beans:prop key="mail.smtp.ssl.protocols">TLSv1.2</beans:prop>		
+			
+			</beans:props>
+		</beans:property>
+	</beans:bean> 
+		
+	
 	
 	
 	

@@ -81,15 +81,26 @@ create table sellboard(
     on delete cascade
 );
 
---찜목록
-create table heartboard(
-    he_nickname varchar2(30),
-    he_title varchar2(100),
-    he_price number,
-    he_seller varchar2(30),
-    constraint fk_heart_id foreign key (he_nickname) references mypage (my_nickname)
-    on delete cascade
+CREATE TABLE MARKETBOARD(
+   bo_num NUMBER PRIMARY KEY,
+   bo_id VARCHAR2(30),
+   bo_title VARCHAR2(100) NOT NULL,
+   bo_nickname VARCHAR2(20),
+   bo_price NUMBER NOT NULL,
+   bo_content VARCHAR(2000) NOT NULL,
+   bo_regdate DATE DEFAULT SYSDATE,
+   bo_image VARCHAR2(2000),
+   bo_count NUMBER DEFAULT 0,
+   bo_heart NUMBER,
+   bo_heartcount NUMBER,
+   bo_category VARCHAR2(50),
+   bo_address1 VARCHAR2(50) NOT NULL,-- 시군구
+   bo_address2 VARCHAR2(30), -- 동 not null 삭제
+   CONSTRAINT fk_board_id FOREIGN KEY (bo_id) REFERENCES MARKETUSER (us_id)
+   ON DELETE CASCADE
 );
+
+drop table heartboard;
 
 
 --고객센터

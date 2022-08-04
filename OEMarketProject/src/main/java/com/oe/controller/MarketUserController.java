@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oe.domain.MarketUserVO;
-import com.oe.service.MailSendService;
 import com.oe.service.MarketUserService;
 
 import lombok.AllArgsConstructor;
@@ -30,19 +29,51 @@ import lombok.extern.log4j.Log4j;
 public class MarketUserController {
 	
 	private MarketUserService userService;
-	private JavaMailSender mailSender;
-	private MailSendService mailService;
+
+	@Autowired
+	private JavaMailSender mailSender; 
+	//회원가입 페이지 이동
+	@GetMapping("/testEmail")
+	public void userJoin() {}
 	
-	//이메일 인증
-	@GetMapping("/mailCheck")
 	@ResponseBody
-	public String mailCheck(String email) {
-		System.out.println("이메일 인증 요청이 들어옴!");
-		System.out.println("이메일 인증 이메일 : " + email);
-		return mailService.joinEmail(email);
+	@RequestMapping(value = "/emailAuth", method = RequestMethod.POST)
+	public String emailAuth(String email) {		
+		Random random = new Random();
+		int checkNum = random.nextInt(888888) + 111111;
+
+		/* 이메일 보내기 */
+        String setFrom = "jinaa0103@gmail.com";
+        String toMail = email;
+        String title = "회원가입 인증 이메일 입니다.";
+        String content = 
+                "홈페이지를 방문해주셔서 감사합니다." +
+                "<br><br>" + 
+                "인증 번호는 " + checkNum + "입니다." + 
+                "<br>" + 
+                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+        
+        try {
+            
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+            helper.setFrom(setFrom);
+            helper.setTo(toMail);
+            helper.setSubject(title);
+            helper.setText(content,true);
+            mailSender.send(message);
+            
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+        return Integer.toString(checkNum);
+ 
 	}
-			
 	
+	
+	
+	//==============================================
 	@GetMapping("join")
 	public void joinUser() {}
 	@PostMapping("join")
