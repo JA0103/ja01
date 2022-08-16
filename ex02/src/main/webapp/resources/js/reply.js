@@ -7,7 +7,7 @@ var replyService=(function(){
         console.log("add reply..........");
 
         $.ajax({
-            type:'post',         // 전송방식
+            type:'post',         // 전송방식....
             url:'../replies/new',   // url 주소
             data:JSON.stringify(reply),  // 문자열 자체를 json 형태로 바꿔라
             contentType:"application/json; charset=utf-8",
