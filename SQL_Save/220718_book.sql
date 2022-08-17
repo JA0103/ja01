@@ -73,8 +73,20 @@ desc tbl_reply;
 select * from tbl_board;
 select * from tbl_reply;
 select * from tbl_reply where rno = 329 ;
+
 commit;
 
+select rownum rno, bno, reply, replyer, replyDate, updateDate
+from tbl_reply
+where bno=326
+order by rno;
+
+
+select /*+index(tbl_reply idx_reply)*/
+rownum rn, rno, bno, reply, replyer, replyDate, updateDate
+from tbl_reply
+where bno = 326
+and rno > 0 ;
 
 
 

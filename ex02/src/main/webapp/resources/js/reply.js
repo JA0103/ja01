@@ -57,7 +57,7 @@ function remove(rno, callback, error){
 
 
 	function update(reply, callback, error){
-		console.log("update............");
+		
 		
 		$.ajax({
 			type : 'put',
