@@ -7,6 +7,7 @@ import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 
 public interface BoardMapper {
+	
 	public List<BoardVO> getList();
 	public BoardVO read(Long bno);
 	public int delete(Long bno);
@@ -17,6 +18,5 @@ public interface BoardMapper {
 	public int getTotalCount(Criteria cri);
 	
 	//검색조건
-	public List<BoardVO> searchTest(Map<String, Map<String,String>> map);
-	
+	public List<BoardVO> searchTest(Map<String, Map<String, String>> map);
 }

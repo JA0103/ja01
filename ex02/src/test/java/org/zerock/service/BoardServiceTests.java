@@ -7,7 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
-import org.zerock.persistence.DataSourceTests;
 
 import lombok.extern.log4j.Log4j;
 
@@ -22,37 +21,36 @@ public class BoardServiceTests {
 	@Test
 	public void testRegister() {
 		BoardVO vo = new BoardVO();
-		vo.setTitle("qq11111");
-		vo.setContent("qqqqq");
-		vo.setWriter("qqq");
+		vo.setTitle("삼국지");
+		vo.setContent("영웅호걸전.......");
+		vo.setWriter("황석영");
 		service.register(vo);
-		log.info("생성된 게시물 번호 : " + vo.getBno());
+		log.info("생성된 게시물 번호" + vo.getBno());
 	}
 	
 	@Test
-	public void testGet() {
-		service.get(13L);
+	public void testRead() {
+		service.get(1L);
 	}
 	
 	@Test
-	public void testRemove() {
-		log.info("삭제 : " + service.remove(13L));
+	public void testDelete() {
+		log.info("삭제된 개수 : " + service.remove(6L));
 	}
 	
 	@Test
 	public void testModify() {
 		BoardVO vo = new BoardVO();
-		vo.setBno(14L);
-		vo.setTitle("수정11");
-		vo.setContent("내용1111");
-		vo.setWriter("저자11111");
-		log.info("수정 : " + service.modify(vo));
+		vo.setBno(21L);
+		vo.setTitle("피곤");
+		vo.setContent("하다");
+		vo.setWriter("......");
+		
+		service.modify(vo);
 	}
 	
 	@Test
 	public void testGetList() {
 		service.getList(new Criteria(2,10));
 	}
-	
-}//
-
+}
