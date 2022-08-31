@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
+<!-- <style type="text/css">
  	
 	section{ height: 500px; background-color:Gainsboro; }
 	section h3{margin: 0 auto; text-align: center; line-height: 100px;}
@@ -13,7 +13,7 @@
 	
 	footer{color: white; height: 65px; background-color: CornflowerBlue; 
 			text-align: center; line-height: 60px;} 
-</style>
+</style> -->
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -33,7 +33,7 @@
 	 	
 	</section>
 	
-	<footer>Copyright © hipenpal.com & ltool.net. All Rights Reserved.</footer>
+	<%@include file="footer.jsp" %>
 
 </body>
 </html>

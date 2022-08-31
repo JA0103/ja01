@@ -15,8 +15,20 @@
     nav{height: 35px; background-color:RoyalBlue; line-height:10px;} 
 	nav ul li { float: left;  margin: 0 30px; list-style: none;}
 	nav ul li a{text-decoration: none; color: white; line-height:30px;}
+	
 	.search{float:right; margin:5px 10px ;}
- 	
+	
+    section{ height: auto; background-color:Gainsboro; }
+	section h3{margin: 0 auto; text-align: center; line-height: 100px;}
+	section table{margin : 0 auto; width: 950px; height: 300px; text-align: center; }
+	section ol{padding:20px;}
+	table a{text-decoration: none; color:white;}
+	
+	
+	footer{color: white; height: 65px; background-color: CornflowerBlue; 
+			text-align: center; line-height: 60px;} 
+	 
+	 	
 </style>
 </head>
 <body>

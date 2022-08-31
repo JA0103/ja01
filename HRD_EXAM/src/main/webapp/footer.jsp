@@ -1,0 +1,1 @@
+<footer>Copyright © hipenpal.com & ltool.net. All Rights Reserved.</footer>

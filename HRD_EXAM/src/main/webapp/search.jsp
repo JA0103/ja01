@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type ="text/javascript" src="script/insertChk.js"></script>
-<style type="text/css">
+<!-- <style type="text/css">
 	
 	*{margin:0; padding:0;}
 	
@@ -31,7 +31,7 @@
 	footer{color: white; height: 65px; background-color: CornflowerBlue; 
 			text-align: center; line-height: 60px;} 
 			
-</style>
+</style> -->
 </head>
 <body>
 <%@ include file="header.jsp" %>

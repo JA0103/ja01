@@ -70,8 +70,6 @@ public class memberDAO {
 				rs = ps.executeUpdate();
 				
 				
-				
-				
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
