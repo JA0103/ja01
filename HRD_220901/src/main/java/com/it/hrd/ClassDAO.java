@@ -334,6 +334,34 @@ public class ClassDAO {
 			return member_seq;
 		}
 		
+		//수강 등록
+		public int insertMember(ClassVO vo) {
+			int rs = 0;
+			String sql = "insert into tbl_member_202201(member_seq,c_no,c_name,phone,address,regist_date,c_type) "
+					+ "values(?,?,?,?,?,?,?) ";
+			
+			try {
+				
+				getConnection();
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, vo.getMember_seq());
+				pstmt.setString(2, vo.getC_no());
+				pstmt.setString(3, vo.getC_name());
+				pstmt.setString(4, vo.getPhone());
+				pstmt.setString(5, vo.getAddress());
+				pstmt.setString(6, vo.getRegist_date());
+				pstmt.setString(7, vo.getC_type());
+				
+				rs = pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				disConnection();
+			}
+			return rs;
+		}
 		
 		
 }//

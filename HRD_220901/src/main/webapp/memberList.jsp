@@ -37,8 +37,8 @@
 			</td>
 			<td><%=vo.getAddress()%></td>
 			<td><%=vo.getC_no()%></td>
-			<td><a href="update_class_form.jsp?member_seq=<%=vo.getMember_seq()%>">수정</a></td>
-			<td><a href="delete_class_impl.jsp?member_seq=<%=vo.getMember_seq()%>">삭제</a></td>
+			<td><a href="update_member_form.jsp?member_seq=<%=vo.getMember_seq()%>">수정</a></td>
+			<td><a href="delete_member_impl.jsp?member_seq=<%=vo.getMember_seq()%>">삭제</a></td>
 		</tr>
 		<%} %>
 		<tr>

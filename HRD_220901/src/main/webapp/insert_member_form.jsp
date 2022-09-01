@@ -1,6 +1,9 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="dao" class="com.it.hrd.ClassDAO"/>
+<% String today = new SimpleDateFormat("YYYYMM").format(new Date()); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +16,7 @@
 
 <section>
 <h3>수강 등록</h3>
-	<form action="insert_member_impl.jsp" method="get" name="frm">
+	<form action="insert_member_impl.jsp" method="get">
 		<table border="1">
 			<tr>
 				<th>순번</th>
@@ -21,7 +24,7 @@
 			</tr>		
 			<tr>
 				<th>과정코드</th>
-				<td><input type="text" name="c_no" readonly="readonly"></td>
+				<td><input type="text" name="c_no"></td>
 			</tr>		
 			<tr>
 				<th>수강생명</th>
@@ -29,7 +32,7 @@
 			</tr>		
 			<tr>
 				<th>전화번호</th>
-				<td><input type="text" name="phone"></td>
+				<td><input type="text" name="phone" placeholder="01000000000"></td>
 			</tr>		
 			<tr>
 				<th>주소</th>
@@ -37,7 +40,7 @@
 			</tr>		
 			<tr>
 				<th>수강등록일</th>
-				<td><input type="text" name="regist_date"></td>
+				<td><input type="text" name="regist_date" value="<%=today%>"></td>
 			</tr>
 			<tr>
 				<th>수강등급</th>
@@ -45,7 +48,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="등록" onclick="return InsetClassCheck()">
+					<input type="submit" value="등록">
 				</td>
 			</tr>		
 		</table>

@@ -192,7 +192,7 @@ create table tbl_member_202201(
     regist_date char(8),
     c_type varchar2(12)
 );
-
+select * from tbl_member_202201;
 create SEQUENCE member_seq
 start with 1
 increment by 1

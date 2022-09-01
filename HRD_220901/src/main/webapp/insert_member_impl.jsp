@@ -6,19 +6,19 @@
 </jsp:useBean>
 
 <%
-	int rs = dao.insertClass(vo);
+	int rs = dao.insertMember(vo);
 
 	if(rs == 1){
 %>
 	<script>
 		alert('등록이 완료 되었습니다.');
-		location.href='memberList.jsp';
+		location.href='classList.jsp';
 	</script>
 <%
 	}else{
 %>
 	<script>
 		alert('등록이 실패했습니다.');
-		location.href='insert_member_form.jsp';
+		location.href='insert_class_form.jsp';
 	</script>
 <%}%>
