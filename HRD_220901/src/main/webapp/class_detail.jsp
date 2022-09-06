@@ -4,19 +4,19 @@
 <jsp:useBean id="dao" class="com.it.hrd.ClassDAO"/>    
 <%
 	String class_seq = request.getParameter("class_seq");
-	ClassVO vo = dao.getDetail(class_seq);
+	ClassVO vo = dao.getClassDetail(class_seq);
 %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>과정 상세 정보 페이지</title>
 </head>
 <body>
 <%@include file="header.jsp" %>
 
 <section>
-	<h3>상세 정보 페이지</h3>
+	<h3>과정 상세 정보 페이지</h3>
 	
 		<table border="1">
 			<tr>

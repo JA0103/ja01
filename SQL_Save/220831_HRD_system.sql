@@ -220,6 +220,14 @@ create table tbl_teacher_202201(
     class_price number(8),
     teacher_regist_date char(8)
 );
+
+select T.class_name, C.class_area, T.teacher_name, T.class_price
+from tbl_teacher_202201 T, tbl_class_202201 C
+where T.teacher_code = C.teacher_code
+and T.teacher_code = 200;
+
+
+
 create SEQUENCE teacher_seq
 start with 1
 increment by 1
@@ -241,17 +249,74 @@ select  D.custno, D.custname, D.grade, sum(price)
 						group by D.CUSTNO, D.custname, D.grade
 						order by sum(price) desc ;
 
-
-
-select C.regist_month,C.c_no,C.class_area,C.tution,C.teacher_code,
-        T.teacher_name,T.class_name
-from tbl_class_202201 C, tbl_teacher_202201 T
-where C.teacher_code = T.teacher_code
-and class_seq = 1
-group by C.regist_month,C.c_no,C.class_area,C.tution,C.teacher_code,
-        T.teacher_name,T.class_name;
+select * from tbl_member_202201 where member_seq=1;
+select M.member_seq,M.c_name,M.phone,M.address,M.regist_date,M.c_type,
+        T.class_name,T.teacher_name
+from tbl_class_202201 C, tbl_teacher_202201 T, tbl_member_202201 M
+where   M.c_no = C.c_no 
+        and C.teacher_code = T.teacher_code
+        and member_seq = 1;
         
+        
+-------------------------------------------------------------------------------
+--0906 수강신청 도우미
+
+create table course_tbl(
+    id varchar2(5) not null primary key, --교과목아이디
+    name varchar2(80),--교과목 명
+    credit number(6),--학점
+    lecturer varchar2(10),--강사
+    week number(2),--요일
+    start_hour number(4),--시작시간
+    end_end number(4)--종료시간
+);
+select * from course_tbl order by id;
+
+select count(id) from course_tbl;
+
+select C.id, C.name, C.credit, L.name, C.week, C.start_hour, C.end_end
+from course_tbl C, lecturer_tbl L
+where C.lecturer = L.idx
+order by id;
 
 
+insert into course_tbl values('10001','프로그래밍', 2, '1', 1, '0900', '1100');
+insert into course_tbl values('10002','객체지향 프로그래밍', 2, '1', 2, '0900', '1200');
+insert into course_tbl values('10003','자료구조', 3, '4', 3, '0900', '1200');
+insert into course_tbl values('10004','알고리즘', 3, '4', 4, '0900', '1200');
+insert into course_tbl values('20001','시스템 프로그래밍', 2, '5', 1, '1300', '1600');
+insert into course_tbl values('20002','운영체제', 3, '5', 2, '1500', '1800');
+insert into course_tbl values('20003','오토마타와 컴파일러', 3, '5', 3, '1330', '1630');
+insert into course_tbl values('30001','소프트웨어 공학', 2, '3', 4, '1330', '1530');
+insert into course_tbl values('30002','시스템 분석 및 설계', 3, '3', 5, '0900', '1200');
+insert into course_tbl values('40001','데이터베이스', 3, '2', 5, '1300', '1600');
 
+
+create table lecturer_tbl(
+    idx number(6) not null primary key,--번호
+    name varchar2(20),--강사명
+    major varchar2(40),--전공
+    field varchar2(40)--연구분야
+);
+select * from lecturer_tbl;
+
+
+create sequence lecturer_seq
+start with 1
+increment by 1
+minvalue 1;
+
+
+insert into LECTURER_TBL values(LECTURER_SEQ.NEXTVAL, '김교수', '소프트웨어공학', '알고리즘');
+insert into LECTURER_TBL values(LECTURER_SEQ.NEXTVAL, '이교수', '소프트웨어공학', '인공지능');
+insert into LECTURER_TBL values(LECTURER_SEQ.NEXTVAL, '박교수', '소프트웨어공학', '소프트웨어공학');
+insert into LECTURER_TBL values(LECTURER_SEQ.NEXTVAL, '우교수', '소프트웨어공학', '알고리즘');
+insert into LECTURER_TBL values(LECTURER_SEQ.NEXTVAL, '최교수', '응용컴퓨터공학', '임베디드 시스템');
+insert into LECTURER_TBL values(LECTURER_SEQ.NEXTVAL, '강교수', '응용컴퓨터공학', '멀티미디어');
+insert into LECTURER_TBL values(LECTURER_SEQ.NEXTVAL, '황교수', '모바일시스템공학', '네트워크');
+
+select * from LECTURER_TBL;
+select * from COURSE_TBL;
+
+commit;
 

@@ -6,19 +6,20 @@
 </jsp:useBean>
 
 <%
-	int rs = dao.insertMember(vo);
-
+	String member_seq = request.getParameter("member_seq");
+	int rs = dao.deleteMember(member_seq);
+	
 	if(rs == 1){
 %>
 	<script>
-		alert('등록이 완료 되었습니다.');
+		alert('삭제 되었습니다.');
 		location.href='memberList.jsp';
 	</script>
 <%
 	}else{
 %>
 	<script>
-		alert('등록이 실패했습니다.');
-		location.href='insert_member_form.jsp';
+		alert('삭제 실패했습니다.');
+		location.href='memberList.jsp';
 	</script>
 <%}%>

@@ -26,7 +26,7 @@
 	
 	
 </style>
-<title>Insert title here</title>
+<title>홈</title>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 		<ul>
 			<li><a href="classList.jsp">과정관리</a></li>
 			<li><a href="memberList.jsp">수강생 정보</a></li>
-			<li><a href="#">교사정보</a></li>
+			<li><a href="teacherList.jsp">교사정보</a></li>
 			<li><a href="index.jsp">홈으로..</a></li>
 		</ul>
 	</nav>

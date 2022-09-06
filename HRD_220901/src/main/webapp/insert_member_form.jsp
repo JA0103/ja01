@@ -40,7 +40,7 @@
 			</tr>		
 			<tr>
 				<th>수강등록일</th>
-				<td><input type="text" name="regist_date" value="<%=today%>"></td>
+				<td><input type="text" readonly="readonly" name="regist_date" value="<%=today%>"></td>
 			</tr>
 			<tr>
 				<th>수강등급</th>
@@ -49,6 +49,7 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="등록">
+					<input type="button" value="목록" onclick="location.href='memberList.jsp'">
 				</td>
 			</tr>		
 		</table>

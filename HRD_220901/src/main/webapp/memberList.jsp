@@ -29,7 +29,7 @@
 		<% for(ClassVO vo : list) {%>
 		<tr>
 			<td>
-				<a href="class_detail.jsp?member_seq=<%=vo.getMember_seq()%>"><%=vo.getMember_seq()%></a>
+				<a href="member_detail.jsp?member_seq=<%=vo.getMember_seq()%>"><%=vo.getMember_seq()%></a>
 			</td>
 			<td><%=vo.getC_name()%></td>
 			<td>
@@ -43,7 +43,7 @@
 		<%} %>
 		<tr>
 			<td colspan="7">
-				<button onclick="location.href='insert_member_form.jsp'">과정등록</button>
+				<button onclick="location.href='insert_member_form.jsp'">수강등록</button>
 			</td>
 		</tr>
 	</table>
