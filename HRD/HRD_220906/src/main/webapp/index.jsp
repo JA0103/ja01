@@ -17,9 +17,6 @@
 <%@include file="header.jsp" %>
 
 <section>
-	<table border="1">
-		<tr>
-			<td><div id="inner">
 				총 <%=dao.getCourseCount()%>개의 교과목이 있습니다.
 						<table border="1">
 							<tr>
@@ -33,10 +30,11 @@
 								<th>관리</th>
 							</tr>
 							<% for(CourseVO vo : list) {
-								String start_hour = String.valueOf(vo.getStart_hour());
 								String week="";
-								
-								if(start_hour.length() == 3){%>
+								String time=Integer.toString(vo.getStart_hour());
+								if(time.length() == 3)
+									time = "0"+Integer.toString(vo.getStart_hour());
+								%>
 									<tr>
 										<td><%=vo.getId() %></td>
 										<td><%=vo.getName() %></td>
@@ -54,43 +52,14 @@
 								}
 								%>										
 										<td><%=week %></td>
-										<td>0<%=vo.getStart_hour() %></td>
+										<td><%=time %></td>
 										<td><%=vo.getEnd_end() %></td>
 										<td><a href="update.jsp?id=<%=vo.getId()%>">수정</a>/<a href="delete_impl.jsp?id=<%=vo.getId()%>">삭제</a></td>
 									</tr>
-							
-							<%
-								}else{
-							%>
-									<tr>
-										<td><%=vo.getId() %></td>
-										<td><%=vo.getName() %></td>
-										<td><%=vo.getCredit() %></td>
-										<td><%=vo.getLecturer() %></td>
-							<%
-							int weeks = vo.getWeek();
-							switch(weeks){
-								case 1 : week="월"; break;
-								case 2 : week="화"; break;
-								case 3 : week="수"; break;
-								case 4 : week="목"; break;
-								case 5 : week="금"; break;
-								case 6 : week="토"; break;
-							}
-							%>											
-										<td><%=week %></td>
-										<td><%=vo.getStart_hour() %></td>
-										<td><%=vo.getEnd_end() %></td>
-										<td><a href="update.jsp?id=<%=vo.getId()%>">수정</a>/<a href="delete_impl.jsp?id=<%=vo.getId()%>">삭제</a></td>
-									</tr>
-							<%}} %>
+							<%} %>
 					</table>
 					<br>
 					<button onclick="location.href='insert.jsp'">작성</button>
-				</div>
-			</td>
-		</tr>
-	</table>
 </section>
 
 <%@include file="footer.jsp" %>

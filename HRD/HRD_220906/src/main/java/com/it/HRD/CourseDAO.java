@@ -69,6 +69,7 @@ public class CourseDAO {
 				vo.setWeek(rs.getInt(5));
 				vo.setStart_hour(rs.getInt(6));
 				vo.setEnd_end(rs.getInt(7));
+				System.out.print(vo.getCredit());
 				list.add(vo);
 			}
 			

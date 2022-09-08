@@ -7,12 +7,16 @@
 	String id = request.getParameter("id");
 	CourseVO vo = dao.getOneCourse(id); 
 	List<CourseVO> list = dao.getLecturer();
-	String start_hour = String.valueOf(vo.getStart_hour());
+/* 	String start_hour = String.valueOf(vo.getStart_hour());
 	String end_hour = String.valueOf(vo.getEnd_end());
 	if(start_hour.length() == 3)
 		start_hour = "0"+String.valueOf(vo.getStart_hour());
 	if(end_hour.length() == 3)
-		end_hour = "0"+String.valueOf(vo.getEnd_end());
+		end_hour = "0"+String.valueOf(vo.getEnd_end()); */
+	int start = vo.getStart_hour();
+    String start_hour = String.format("%04d", start);
+	int end = vo.getEnd_end();
+    String end_hour = String.format("%04d", end);
 	
 %>    
 <!DOCTYPE html>
@@ -25,10 +29,7 @@
 <%@include file="header.jsp" %>
 
 <section>
-	<table border="1">
-		<tr>
-			<td><div id="inner">
-				<h3>교과목 추가</h3>
+				<h3>교과목 수정</h3>
 				<form action="update_impl.jsp" method="get">
 					<table border="1">
 						<tr>
@@ -49,7 +50,7 @@
 								String selected ="";
 							%>
 								<option 
-									<%if(vo.getLecturer().equals(String.valueOf(Lvo.getIdx()))) selected="selected"; %>
+							<%if(vo.getLecturer().equals(String.valueOf(Lvo.getIdx()))) selected="selected"; %>
 								<%=selected%> value=<%=Lvo.getIdx()%>><%=Lvo.getName()%></option>
 							<%} %>
 							</select> </td>					
@@ -60,18 +61,26 @@
 						</tr>
 						<tr>
 							<td>요일</td>	
-							<%
-								String checked="";
-							%>				
-							<td>
+							<%String checked="";%>				
+							<td><%=vo.getWeek() %>
 								<input type="radio" name="week" value="1" 
-									<%if(vo.getWeek() == 1) checked="checked"; %><%=checked%>
+									<%if(vo.getWeek() == 1) checked="checked"; %><%=checked%><%if(checked.equals("checked")) checked=""; %>
 								>월
-								<input type="radio" name="week" value="2" <%if(vo.getWeek() == 2) checked="checked"; %><%=checked%>>화
-								<input type="radio" name="week" value="3" <%if(vo.getWeek() == 3) checked="checked"; %><%=checked%>>수
-								<input type="radio" name="week" value="4" <%if(vo.getWeek() == 4) checked="checked"; %><%=checked%>>목
-								<input type="radio" name="week" value="5" <%if(vo.getWeek() == 5) checked="checked"; %><%=checked%>>금
-								<input type="radio" name="week" value="6" <%if(vo.getWeek() == 6) checked="checked"; %><%=checked%>>토
+								<input type="radio" name="week" value="2" 
+									<%if(vo.getWeek() == 2) checked="checked"; %><%=checked%><%if(checked.equals("checked")) checked=""; %>
+								>화
+								<input type="radio" name="week" value="3" 
+									<%if(vo.getWeek() == 3) checked="checked"; %><%=checked%><%if(checked.equals("checked")) checked=""; %>
+								>수
+								<input type="radio" name="week" value="4" 
+									<%if(vo.getWeek() == 4) checked="checked"; %><%=checked%><%if(checked.equals("checked")) checked=""; %>
+								>목
+								<input type="radio" name="week" value="5" 
+									<%if(vo.getWeek() == 5) checked="checked"; %><%=checked%><%if(checked.equals("checked")) checked=""; %>
+								>금
+								<input type="radio" name="week" value="6" 
+									<%if(vo.getWeek() == 6) checked="checked"; %><%=checked%><%if(checked.equals("checked")) checked=""; %>
+								>토
 							</td>					
 						</tr>
 						<tr>
@@ -89,10 +98,6 @@
 						<input type="submit" value="완료">
 					</div>
 					</form>
-				</div>
-			</td>
-		</tr>
-	</table>
 </section>
 
 <%@include file="footer.jsp" %>

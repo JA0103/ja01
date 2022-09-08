@@ -6,30 +6,26 @@
 <meta charset="UTF-8">
 <style type="text/css">
 
-	/* *{margin: 0; padding: 0;} */
-	header table{border-style: none; width: 100%; height: 80px; text-align: center;}
-	footer table{border-style: none; width: 100%; height: 50px; text-align: center;}
+	header, section, footer {border: 2px solid #333}
+	header {width: 100%; height: 80px; text-align: center; line-height: 50px;}
+	footer {width: 100%; height: 50px; text-align: center; line-height: 50px;}
 	
-	section table{border-style: none; width: 100%; height: auto;}
-	#inner table{padding:20px; border-style: none; text-align: center; margin: 0 auto; width: 90%;}
-	#inner table th{background-color: olive; }
-	#inner button{float: right;}
-	#inner h3{text-align: center; line-height: 12px;}
-	#inner table td a{text-decoration: none;}
+	section{margin: 10px 0px 10px 0px; height: 360px;} 
+	table{border:2px solid #333; border-collapse:collapse; width: 90%; height: auto; text-align: center; margin: 0 auto;}
+ 	table th{background-color: olive; height: 30px;}
+	table td a{text-decoration: none;} 
+	section h3{text-align: center; line-height: 12px;}
 	
-	#button{text-align: center; margin-bottom: 10px;}
-	
+	button{float: right; background-color: white; margin-right:10px; padding: 5px 15px 5px 15px;}
+	.button input{text-align: center; margin-bottom: 10px; background-color: white; padding: 5px 15px 5px 15px;} 
+	 
 	
 </style>
 <title>Insert title here</title>
 </head>
 <body>
 	<header>
-		<table border="1">
-			<tr>
-				<td>수강신청 도우미 사이트</td>
-			</tr>
-		</table>
+			<h3>수강신청 도우미 사이트</h3>
 	</header>
 </body>
 </html>

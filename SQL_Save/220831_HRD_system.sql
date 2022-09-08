@@ -261,6 +261,10 @@ where   M.c_no = C.c_no
 -------------------------------------------------------------------------------
 --0906 수강신청 도우미
 
+select C.id,C.name,C.credit,L.name,C.week,C.start_hour,C.end_end
+from course_tbl C, lecturer_tbl L
+where C.lecturer = L.idx;
+
 create table course_tbl(
     id varchar2(5) not null primary key, --교과목아이디
     name varchar2(80),--교과목 명
@@ -270,6 +274,14 @@ create table course_tbl(
     start_hour number(4),--시작시간
     end_end number(4)--종료시간
 );
+
+create table lecturer_tbl(
+    idx number(6) not null primary key,--번호
+    name varchar2(20),--강사명
+    major varchar2(40),--전공
+    field varchar2(40)--연구분야
+);
+
 select * from course_tbl order by id;
 
 select count(id) from course_tbl;

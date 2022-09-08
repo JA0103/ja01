@@ -14,9 +14,6 @@
 <%@include file="header.jsp" %>
 
 <section>
-	<table border="1">
-		<tr>
-			<td><div id="inner">
 				<h3>교과목 추가</h3>
 				<form action="insert_impl.jsp" method="get">
 					<table border="1">
@@ -61,15 +58,12 @@
 							<td><input type="text" name="end_end"></td>					
 						</tr>
 					</table>
-					<div id="button">
+					<br>
+					<div class="button" style="text-align: center;">
 						<input type="button" onclick="location.href='index.jsp'" value="목록">
 						<input type="submit" value="완료">
 					</div>
 					</form>
-				</div>
-			</td>
-		</tr>
-	</table>
 </section>
 
 <%@include file="footer.jsp" %>
