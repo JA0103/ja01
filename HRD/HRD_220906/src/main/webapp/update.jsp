@@ -62,7 +62,7 @@
 						<tr>
 							<td>요일</td>	
 							<%String checked="";%>				
-							<td><%=vo.getWeek() %>
+							<td>
 								<input type="radio" name="week" value="1" 
 									<%if(vo.getWeek() == 1) checked="checked"; %><%=checked%><%if(checked.equals("checked")) checked=""; %>
 								>월
