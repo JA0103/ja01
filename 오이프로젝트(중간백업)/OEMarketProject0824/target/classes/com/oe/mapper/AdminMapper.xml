@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oe.mapper.AdminMapper">
+ 
+ 	<select id="getUserId" resultType="com.oe.domain.MarketUserVO">
+ 		select us_id from marketuser
+ 	</select>
+   <select id="readUserList" resultType="com.oe.domain.MarketUserVO">
+<!--       select u.us_id, u.us_name, u.us_nickname, u.us_joindate, (select count(*) from marketboard where bo_id = #{list}) as board_count from marketuser u where us_id = #{list} -->
+<!--       select us_id, us_name, us_nickname, us_joindate, (select count(*) from marketboard where bo_id = #{user_id}) as board_count from marketuser wehre us_id= #{user_id} -->
+      select us_id, us_name, us_nickname, us_joindate, us_replyCnt, us_boardCnt from marketuser
+   </select>
+   <select id="readBoardList" resultType="com.oe.domain.MarketBoardVO">
+      select bo_title, bo_nickname, bo_regdate from marketboard order by bo_num asc
+   </select>
+
+<!-- 게시글 카운트  -->
+   <update id="updateBoardCnt" >            
+      update marketuser set us_boardCnt = us_boardCnt + #{amount} where us_id = #{re_id}
+   </update>
+<!-- 댓글 카운트-->
+   <update id="updateReplyCnt" >            
+      update marketuser set us_replyCnt = us_replyCnt + #{amount} where us_id = #{re_id}
+   </update> 
+</mapper>
